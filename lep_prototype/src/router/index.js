@@ -9,6 +9,8 @@ import Team from "@/views/Team";
 import SignUp from "@/views/SignUp";
 import SignIn from "@/views/SignIn";
 import Todo from "@/views/Todo";
+import MyPage from "@/views/MyPage";
+import Register from "@/views/Register";
 
 
 Vue.use(Router);
@@ -62,7 +64,19 @@ const router = new Router({
           path: "/todo",
           name: "todo",
           component: Todo
+        },
+        {
+          path: "/mypage",
+          name: "mypage",
+          component: MyPage
+        },
+        {
+          path: "/register",
+          name: "register",
+          component: Register
         }
+
+
       ]
     }
   ]

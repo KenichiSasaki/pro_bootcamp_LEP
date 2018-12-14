@@ -6,7 +6,7 @@
         <v-layout>
           <v-flex xs12>
             <img width="180px" alt="Logo" src="../../assets/LEP_logo.png">
-            <h1>Welcome to Language Exchange Partner program for TokyoTech</h1>
+            <h1>Registration to Language Exchange Partner program for TokyoTech</h1>
           </v-flex>
         </v-layout>
       </v-container>
@@ -34,9 +34,8 @@
                 <v-text-field type="password" v-model="password" placeholder="password">
                 </v-text-field>
              </v-card>
-              </v-flex>
-              <v-btn v-on:click="signin">LogIn</v-btn> 
-              <v-btn v-on:click="newaccount">Create New Account</v-btn>
+              </v-flex> 
+              <v-btn v-on:click="signup">Create New Account</v-btn>
              </v-card-text>
              </v-card>
            </v-flex>
@@ -52,7 +51,6 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 import firebase from "firebase";
-import MyPage from "@/views/MyPage";
 
 export default {
   name: 'home',
@@ -68,22 +66,21 @@ export default {
   },
 
   methods: {
-    signin: function () {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-      .then(user=> {
-        alert('Success!')
-        this.$router.push('/mypage')
-      },
-      error => {
-        alert(err.message)
-      });
-    },
-    newaccount: function () {
-      this.$router.push('/register')
-    } 
     
+    signup: function () {
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+      .then(user => {
+        alert('Create account:', this.email);
+        console.log(user);
+        this.$router.push('/mypage')
+      })
+      .catch(error =>  {
+        alert(error.message);
+      });
+      
+
+    }
   }
-  
 
   
 };
