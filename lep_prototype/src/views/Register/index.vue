@@ -68,11 +68,10 @@
               :items="dropdown_gender"
               label="Gender"
             ></v-overflow-btn>
-            <v-text-field
+            <v-overflow-btn
+              :items="countries"
               label="Nationality"
-              placeholder=""
-              box>
-            </v-text-field>
+            ></v-overflow-btn>
             <v-text-field
               label="Department"
               placeholder=""
@@ -122,7 +121,7 @@
           <v-card-text>
             <h1> Language Want to Learn </h1>
             <v-overflow-btn
-              :items="dropdown_want_to_learn1"
+              :items="languages"
               label="Language you want to learn"
             ></v-overflow-btn>
             <v-overflow-btn
@@ -130,7 +129,7 @@
               label="Language proficiency"
             ></v-overflow-btn>
             <v-overflow-btn
-              :items="dropdown_want_to_learn2"
+              :items="languages"
               label="2nd Language you want to learn (optional)"
             ></v-overflow-btn>
             <v-overflow-btn
@@ -146,7 +145,7 @@
           <v-card-text>
             <h1> Language You Can Teach</h1>
             <v-overflow-btn
-              :items="dropdown_teach1"
+              :items="languages"
               label="Language you can teach"
             ></v-overflow-btn>
             <v-overflow-btn
@@ -154,7 +153,7 @@
               label="Language proficiency"
             ></v-overflow-btn>
             <v-overflow-btn
-              :items="dropdown_teach2"
+              :items="languages"
               label="2nd Language you can teach (optional)"
             ></v-overflow-btn>
             <v-overflow-btn
@@ -162,7 +161,7 @@
               label="Language proficiency"
             ></v-overflow-btn>
             <v-overflow-btn
-              :items="dropdown_teach3"
+              :items="languages"
               label="3rd Language you can teach (optional)"
             ></v-overflow-btn>
             <v-overflow-btn
@@ -210,13 +209,15 @@
 
 <script>
 import firebase from "firebase";
+import languages from "../../api/db/languages.js"
+import countries from "../../api/db/countries.js"
 
 export default{
   name: "register",
-
   data() {
     return {
-
+      languages: languages.languages,
+      countries: countries.countries,
       titechemail: null,
       username: null,
       password: null,
@@ -238,16 +239,11 @@ export default{
 
       dropdown_freaquency: ['Once','Twice','Three times','More'],
   
-      dropdown_want_to_learn1: ['English','Japanese','Other'],
       dropdown_want_level1: ['A0','A1','A2','B1','B2','C1','C2'],
-      dropdown_want_to_learn2: ['English','Japanese','Other'],
       dropdown_want_level2: ['A0','A1','A2','B1','B2','C1','C2'],
       
-      dropdown_teach1: ['English','Japanese','Other'],
       dropdown_teach_level1: ['native','over C1'],
-      dropdown_teach2: ['English','Japanese','Other'],
       dropdown_teach_level2: ['native','over C1'],
-      dropdown_teach3: ['English','Japanese','Other'],
       dropdown_teach_level3: ['native','over C1'],
       
       headers:[
