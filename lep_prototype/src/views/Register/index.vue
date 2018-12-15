@@ -5,7 +5,7 @@
       <v-container>
         <v-layout>
           <v-flex xs12>
-            <img width="180px" alt="Logo" src="../../assets/LEP_logo.png">
+            <img width="180px" alt="Logo" src="../../assets/LEP_logo.png" v-icon @click="backhome">
             <h3 class="ma-3">Language Exchange Partner program for TokyoTech</h3>
             <h1 class="mb-4">Registration</h1>
               
@@ -64,12 +64,10 @@
               placeholder=""
               box>
             </v-text-field>
-            <v-radio-group v-model="gender" :mandatory="false">
-              <h3>Gender</h3>
-              <v-radio label="Male" value="gender-1"></v-radio>
-              <v-radio label="Female" value="gender-2"></v-radio>
-              <v-radio label="Others" value="gender-3"></v-radio>
-            </v-radio-group>
+            <v-overflow-btn
+              :items="dropdown_gender"
+              label="Gender"
+            ></v-overflow-btn>
             <v-text-field
               label="Nationality"
               placeholder=""
@@ -89,7 +87,8 @@
 
         <v-card flat v-if="show1">
           <v-card-text>
-            <h1> Your Schedule </h1>
+            <h1 class="mb-3">Your Schedule</h1>
+            <h3>Please check your schedule available</h3>
             <v-data-table
               :headers="headers"
               :items="time"
@@ -97,15 +96,21 @@
             >
               <template slot="items" slot-scope="props">
                 <td>{{ props.item.name }}</td>
-                <td><v-checkbox　v-model="props.item.mondayValue"></v-checkbox></td>
-                <td><v-checkbox　v-model="props.item.tuedayValue"></v-checkbox></td>
-                <td><v-checkbox　v-model="props.item.wednesdayValue"></v-checkbox></td>
-                <td><v-checkbox　v-model="props.item.thursdayValue"></v-checkbox></td>
-                <td><v-checkbox　v-model="props.item.fridayValue"></v-checkbox></td>
-
-                
+                <td><v-checkbox v-model="props.item.mondayValue"></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.tuedayValue"></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.wednesdayValue"></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.thursdayValue"></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.fridayValue"></v-checkbox></td>
               </template>
             </v-data-table>
+            <v-switch
+              :label="`Weekend`"
+              v-model="switch1"
+            ></v-switch>
+            <v-overflow-btn
+              :items="dropdown_freaquency"
+              label="Preferred frequency per one week"
+            ></v-overflow-btn>
           </v-card-text>
         </v-card>
 
@@ -212,7 +217,13 @@ export default{
       show1: false,
       show2: false,
 
+      switch1: false,
+
+      dropdown_gender: ['Male','Female','Others'],
+
       dropdown_degree: ['B1','B2','B3','B4','Master','Ph.D','Exchange','Visiter','Others'],
+
+      dropdown_freaquency: ['Once','Twice','Three times','More'],
   
       dropdown_want_to_learn1: ['English','Japanese','Other'],
       dropdown_want_level1: ['A0','A1','A2','B1','B2','C1','C2'],
@@ -301,6 +312,10 @@ export default{
   },
 
    methods: {
+     backhome(){
+       this.$router.push('/home')
+      },
+
     next: function() {
       console.log(this.agreement)
       if (this.agreement=="agreement-1") {
@@ -313,6 +328,7 @@ export default{
       }
     },
 
+    
     confirm: function() {
       this.show1=false
       this.show2=true

@@ -5,7 +5,7 @@
         
         <v-layout>
           <v-flex xs12>
-            <img width="180px" alt="Logo" src="../../assets/LEP_logo.png">
+            <img width="180px" alt="Logo" src="../../assets/LEP_logo.png" v-icon @click="backhome">
             <h1>LEP program My Page</h1>
           </v-flex>
         </v-layout>
@@ -71,18 +71,29 @@ export default {
     HelloWorld
   },
 
+  beforeCreate() {
+    if(firebase.auth().currentUser){
+      console.log(firebae.auth().currentUser)
+    }else{
+      alert("You need to login to see this page.")
+      this.$router.push("/")
+    }
+
+  },
+
   methods: {
+    backhome(){
+       this.$router.push('/home')
+      },
+
     signout: function () {
       firebase.auth().signOut().then(() => {
         alert('LogOut!')
         this.$router.push('/home')
       });
     }
-  }
-
-  
+  }  
 };
-
 
 </script>
 
