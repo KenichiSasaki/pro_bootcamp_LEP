@@ -132,7 +132,7 @@
               label="Language you want to learn"
             ></v-overflow-btn>
             <v-overflow-btn
-              v-model="LearnLang1Level"
+              v-model="LearnLang1level"
               :items="dropdown_want_level1"
               label="Language proficiency"
             ></v-overflow-btn>
@@ -142,7 +142,7 @@
               label="2nd Language you want to learn (optional)"
             ></v-overflow-btn>
             <v-overflow-btn
-              v-model="LearnLang2Level"
+              v-model="LearnLang2level"
               :items="dropdown_want_level2"
               label="Language proficiency"
             ></v-overflow-btn>
@@ -193,12 +193,14 @@
           <v-card-text>
             <h1 class="mb-3"> Information for finding partner</h1>
             <v-text-field
+              v-model="hobbyinterest"
               label="Hobby and Interest"
               placeholder=""
               box>
             </v-text-field>
             <v-textarea
               box
+              v-model="comments"
               name="input-7-4"
               label="Other Comments"
               value=""
@@ -236,6 +238,8 @@ export default{
       languages: languages.languages,
       countries: countries.countries,
       department: department.department,
+      
+    //personal info
       titechemail: null,
       password: null,
       agreement: null,
@@ -253,17 +257,20 @@ export default{
       frequency: null,
 
       learnlang1: null,
-      learnlang1Level: null,
+      learnlang1level: null,
       learnlang2: null,
-      learnlang2Level: null,
+      learnlang2level: null,
 
       teachlang1: null,
-      teachlang1Level: null,
+      teachlang1level: null,
       teachlang2: null,
-      teachlang2Level: null,
+      teachlang2level: null,
       teachlang3: null,
-      teachlang3Level: null,
+      teachlang3level: null,
 
+      hobbyinterest: null,
+      comments: null,
+    //
       showagreement: true,
       shownewaccount: false,
       showpersnalinfo: false,
@@ -436,10 +443,28 @@ export default{
       .then(username => {
         var db = firebase.firestore();
         db.collection("user").add({
-          titechemail = "titechemail",
-          password: "password",
-          email2: "Lovelace",
-          
+          titechemail: "titechemail",
+          username:"username",
+          email2: "emial2",
+          stundentid: "studentid",
+          gender: "gender",
+          nation: "nation",
+          deaprtment: "department",
+          degree: "degree",
+          weekend: "weekend",
+          frequency: "frequency",
+          learnlang1: "learnlang1",
+          learnlang1level: "learnlang1level",
+          learnlang2: "learnlang2",
+          learnlang2level: "learnlang2level",
+          teachlang1: "teachlang1",
+          teachlang1level: "teachlang1level",
+          teachlang2: "teachlang2",
+          teachlang2level: "teachlang2level",
+          teachlang3: "teachlang3",
+          teachlang3level: "teachlang3level",
+          hobbyinterest: "hobbyinterest",
+          comments: "comments"
           })
           .then(function(docRef) {
           console.log("Document written with ID: ", docRef.id);
