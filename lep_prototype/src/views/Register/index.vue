@@ -12,8 +12,8 @@
           </v-flex>
         </v-layout>
 
-        <v-card>
-          <v-card-text v-if="show0">
+        <v-card flat>
+          <v-card-text v-if="showagreement">
             <p class="text-xs-left">This application form is for the Language Exchange Partner program (LEP) that takes place during the fourth quarter in 2018 academic year.
             <br>LEP is the system for TokyoTech students learning languages through conversation with your partner. This Google form is required to fill in so we can suggest the best partner for this program.
             <br>The important information (name, student ID, and e-mail address) will be deleted when this program has finished for those who get partners, and when matching has finished for those who could not get partners.</p>
@@ -21,27 +21,27 @@
               <v-radio label="I agree" value="agreement-1"></v-radio>
               <v-radio label="I do not agree" value="agreement-2"></v-radio>
             </v-radio-group>
-            <v-btn v-on:click="next">Next</v-btn>
+            <v-btn v-on:click="gotonewaccount">Next</v-btn>
           </v-card-text>
         </v-card>
 
-        <v-card flat v-if='show1'>
+        <v-card flat v-if='shownewaccount'>
           <v-card-text>
             <h1> Create New Account</h1>
             <v-text-field 
             v-model="titechemail" 
             placeholder="Titech email address">
             </v-text-field>
-            
-            <v-text-field 
+            <v-text-field
             type="password" 
-            v-model="password" 
+            v-model="password"
             placeholder="password">
             </v-text-field>
+            <v-btn v-on:click="gotopersonalinfo">Next</v-btn>
           </v-card-text>
         </v-card>
 
-        <v-card falt v-if="show1">
+        <v-card flat v-if="showpersnalinfo">
           <v-card-text>
             <h1 class="mb-3"> Personal Information</h1> 
             <p class="text-xs-left">We will inform you the matching result via e-mail. Please make sure the e-mail written below is correct.
@@ -84,10 +84,12 @@
               :items="dropdown_degree"
               label="Degree"
             ></v-overflow-btn>
+            <v-btn v-on:click="backtonewaccount">Back</v-btn>
+            <v-btn v-on:click="gotoschedule">Next</v-btn>
           </v-card-text>
         </v-card>
 
-        <v-card flat v-if="show1">
+        <v-card flat v-if="showschedule">
           <v-card-text>
             <h1> Your Schedule </h1>
             <v-data-table
@@ -97,19 +99,19 @@
             >
               <template slot="items" slot-scope="props">
                 <td>{{ props.item.name }}</td>
-                <td><v-checkbox　v-model="props.item.mondayValue"></v-checkbox></td>
-                <td><v-checkbox　v-model="props.item.tuedayValue"></v-checkbox></td>
-                <td><v-checkbox　v-model="props.item.wednesdayValue"></v-checkbox></td>
-                <td><v-checkbox　v-model="props.item.thursdayValue"></v-checkbox></td>
-                <td><v-checkbox　v-model="props.item.fridayValue"></v-checkbox></td>
-
-                
+                <td><v-checkbox v-model="props.item.mondayValue"></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.tuedayValue"></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.wednesdayValue"></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.thursdayValue"></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.fridayValue"></v-checkbox></td>
               </template>
             </v-data-table>
+            <v-btn v-on:click="backtopersonalinfo">Back</v-btn>
+            <v-btn v-on:click="gotolanguagewant">Next</v-btn>
           </v-card-text>
         </v-card>
 
-        <v-card flat v-if="show1">
+        <v-card flat v-if="showlanguagewant">
           <v-card-text>
             <h1> Language Want to Learn </h1>
             <v-overflow-btn
@@ -128,10 +130,12 @@
               :items="dropdown_want_level2"
               label="Language proficiency"
             ></v-overflow-btn>
+            <v-btn v-on:click="backtoschedule">Back</v-btn>
+            <v-btn v-on:click="gotolanguageteach">Next</v-btn>
           </v-card-text>
         </v-card>
 
-        <v-card flat v-if="show1">
+        <v-card flat v-if="showlanguageteach">
           <v-card-text>
             <h1> Language You Can Teach</h1>
             <v-overflow-btn
@@ -158,10 +162,12 @@
               :items="dropdown_teach_level3"
               label="Language proficiency"
             ></v-overflow-btn>
+            <v-btn v-on:click="backtolanguagewant">Back</v-btn>
+            <v-btn v-on:click="gotofindinfo">Next</v-btn>
           </v-card-text>
         </v-card>
 
-        <v-card flat v-if="show1">
+        <v-card flat v-if="showfindinfo">
           <v-card-text>
             <h1 class="mb-3"> Information for finding partner</h1>
             <v-text-field
@@ -169,23 +175,23 @@
               placeholder=""
               box>
             </v-text-field>
-            
             <v-textarea
               box
               name="input-7-4"
               label="Other Comments"
               value=""
             ></v-textarea>
+            <v-btn v-on:click="backtolanguageteach">Back</v-btn>
             <v-btn v-on:click="confirm">Confirm</v-btn>
           </v-card-text>
         </v-card>
 
-        <v-card flat v-if="show2">
+        <v-card flat v-if="showconfirm">
           <v-card-text>
             <h1 class="mb-3"> Confirmation</h1>
-            <h3> Titech email address: {{titechemail}} </h3>
-            <h3> User Name: {{username}} </h3>
-            <v-btn v-on:click="back">Back</v-btn>
+            <h3> Titech email address: <font color="red"> {{titechemail}} </font> </h3>
+            <h3> User Name: <font color="red"> {{username}} </font> </h3>
+            <v-btn v-on:click="backtofindinfo">Back</v-btn>
             <v-btn v-on:click="signUp">Create New Account</v-btn>
           </v-card-text>
         </v-card>
@@ -208,9 +214,14 @@ export default{
       username: null,
       password: null,
       agreement: null,
-      show0: true,
-      show1: false,
-      show2: false,
+
+      showagreement: true,
+      shownewaccount: false,
+      showpersnalinfo: false,
+      showschedule: false,
+      showlanguagewant: false,
+      showlanguageteach: false,
+      showfindinfo: false,
 
       dropdown_degree: ['B1','B2','B3','B4','Master','Ph.D','Exchange','Visiter','Others'],
   
@@ -301,28 +312,69 @@ export default{
   },
 
    methods: {
-    next: function() {
-      console.log(this.agreement)
+    gotonewaccount: function() {
       if (this.agreement=="agreement-1") {
-        this.show1=true
-        this.show0=false
+        this.shownewaccount=true
+        this.showagreement=false
       }
       else if (this.agreement=="agreement-2") {
-        this.show1=false
+        this.shownewaccount=false
         this.$router.push('/')
       }
     },
-
-    confirm: function() {
-      this.show1=false
-      this.show2=true
-
+    
+    gotopersonalinfo: function() {
+      this.shownewaccount=false
+      this.showpersnalinfo=true
+    },
+    backtonewaccount: function() {
+      this.shownewaccount=true
+      this.showpersnalinfo=false
     },
 
-    back: function() {
-      this.show1=true
-      this.show2=false
+    gotoschedule: function() {
+      this.showpersnalinfo=false
+      this.showschedule=true
+    },
+    backtopersonalinfo: function() {
+      this.showpersnalinfo=true
+      this.showschedule=false
+    },
 
+    gotolanguagewant: function() {
+      this.showschedule=false
+      this.showlanguagewant=true
+    },
+    backtoschedule: function() {
+      this.showschedule=true
+      this.showlanguagewant=false
+    },
+
+    gotolanguageteach: function() {
+      this.showlanguagewant=false
+      this.showlanguageteach=true
+    },
+    backtolanguagewant: function() {
+      this.showlanguagewant=true
+      this.showlanguageteach=false
+    },
+
+    gotofindinfo: function() {
+      this.showlanguageteach=false
+      this.showfindinfo=true
+    },
+    backtolanguageteach: function() {
+      this.showlanguageteach=true
+      this.showfindinfo=false
+    },
+
+    confirm: function() {
+      this.showfindinfo=false
+      this.showconfirm=true
+    },
+    backtofindinfo: function() {
+      this.showfindinfo=true
+      this.showconfirm=false
     },
     
     signUp: function () {
@@ -332,17 +384,10 @@ export default{
         console.log(username);
         this.$router.push('/mypage')
       })
-      .catch(error =>  {
+      .catch(error => {
         alert(error.message);
       });
-      
-
     }
   }
-}
-
-
-
+};
 </script>
-
-
