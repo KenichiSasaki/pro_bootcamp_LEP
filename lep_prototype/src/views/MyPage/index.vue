@@ -17,8 +17,31 @@
           <v-flex xs8>
             <v-card flat>
               <v-card-text>
-              <HelloWorld/>
+                <v-tabs
+                  v-model="active"
+                  color="cyan"
+                  dark
+                  slider-color="yellow"
+                >
+                <v-tab
+                  v-for="n in 4"
+                  :key="n"
+                   ripple
+                >
+               Item {{ n }}
+
+              </v-tab>
+              <v-tab-item
+                v-for="n in 4"
+                :key="n"
+              >
+                <v-card flat>
+                  <v-card-text>mypage</v-card-text>
+                </v-card>
+              </v-tab-item>
+            </v-tabs>
               </v-card-text>
+                      
              </v-card>
            </v-flex>
 
