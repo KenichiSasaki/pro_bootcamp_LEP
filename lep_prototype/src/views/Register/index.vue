@@ -60,24 +60,29 @@
               box>
             </v-text-field>
             <v-text-field
+              v-model="studentid"
               label="Student ID"
               placeholder=""
               box>
             </v-text-field>
             <v-overflow-btn
+              v-model="gender"
               :items="dropdown_gender"
               label="Gender"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="nation"
               :items="countries"
               label="Nationality"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="department"
               :items="department"
               label="Department"
             ></v-overflow-btn>
             </v-text-field>
             <v-overflow-btn
+              v-model="degree"
               :items="dropdown_degree"
               label="Degree"
             ></v-overflow-btn>
@@ -106,9 +111,10 @@
             </v-data-table>
             <v-switch
               :label="`Weekend`"
-              v-model="switch1"
+              v-model="weekend"
             ></v-switch>
             <v-overflow-btn
+              v-model="frequency"
               :items="dropdown_freaquency"
               label="Preferred frequency per one week"
             ></v-overflow-btn>
@@ -121,18 +127,22 @@
           <v-card-text>
             <h1> Language Want to Learn </h1>
             <v-overflow-btn
+              v-model="LearnLang1"
               :items="languages"
               label="Language you want to learn"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="LearnLang1Level"
               :items="dropdown_want_level1"
               label="Language proficiency"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="LearnLang2"
               :items="languages"
               label="2nd Language you want to learn (optional)"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="LearnLang2Level"
               :items="dropdown_want_level2"
               label="Language proficiency"
             ></v-overflow-btn>
@@ -145,26 +155,32 @@
           <v-card-text>
             <h1> Language You Can Teach</h1>
             <v-overflow-btn
+              v-model="teachlang1"
               :items="languages"
               label="Language you can teach"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="teachlang1level"
               :items="dropdown_teach_level1"
               label="Language proficiency"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="teachlang2"
               :items="languages"
               label="2nd Language you can teach (optional)"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="teachlang2level"
               :items="dropdown_teach_level2"
               label="Language proficiency"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="teachlang3"
               :items="languages"
               label="3rd Language you can teach (optional)"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="teachlang3level"
               :items="dropdown_teach_level3"
               label="Language proficiency"
             ></v-overflow-btn>
@@ -221,9 +237,32 @@ export default{
       countries: countries.countries,
       department: department.department,
       titechemail: null,
-      username: null,
       password: null,
       agreement: null,
+      
+      username: null,
+      email2:null,
+      stundentid: null,
+      
+      gender: null,
+      nation: null,
+      department: null,
+      degree: null,
+
+      weekend: null,
+      frequency: null,
+
+      learnlang1: null,
+      learnlang1Level: null,
+      learnlang2: null,
+      learnlang2Level: null,
+
+      teachlang1: null,
+      teachlang1Level: null,
+      teachlang2: null,
+      teachlang2Level: null,
+      teachlang3: null,
+      teachlang3Level: null,
 
       showagreement: true,
       shownewaccount: false,
@@ -395,10 +434,23 @@ export default{
     signUp: function () {
       firebase.auth().createUserWithEmailAndPassword(this.titechemail, this.password)
       .then(username => {
-        alert('Create account:', this.titechemail);
-        console.log(username);
-        this.$router.push('/mypage')
-      })
+        var db = firebase.firestore();
+        db.collection("user").add({
+          titechemail = "titechemail",
+          password: "password",
+          email2: "Lovelace",
+          
+          })
+          .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+          })
+          .catch(function(error) {
+          console.error("Error adding document: ", error);
+          });
+          alert('Create account:', this.titechemail);
+          console.log(username);
+          this.$router.push('/mypage')
+        })
       .catch(error => {
         alert(error.message);
       });
