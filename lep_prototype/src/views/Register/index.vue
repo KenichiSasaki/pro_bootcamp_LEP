@@ -72,10 +72,10 @@
               :items="countries"
               label="Nationality"
             ></v-overflow-btn>
-            <v-text-field
+            <v-overflow-btn
+              :items="department"
               label="Department"
-              placeholder=""
-              box>
+            ></v-overflow-btn>
             </v-text-field>
             <v-overflow-btn
               :items="dropdown_degree"
@@ -211,6 +211,7 @@
 import firebase from "firebase";
 import languages from "../../api/db/languages.js"
 import countries from "../../api/db/countries.js"
+import department from "../../api/db/department.js"
 
 export default{
   name: "register",
@@ -218,6 +219,7 @@ export default{
     return {
       languages: languages.languages,
       countries: countries.countries,
+      department: department.department,
       titechemail: null,
       username: null,
       password: null,
