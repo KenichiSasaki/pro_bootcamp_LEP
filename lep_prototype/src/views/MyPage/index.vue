@@ -317,7 +317,7 @@
                         </v-menu>
 
                         <v-layout right>
-                          <v-btn v-on:click="send">Send Report</v-btn>
+                          <v-btn v-on:click="sendreport">Send Report</v-btn>
                         </v-layout>
 
                   </v-card-text>
@@ -328,20 +328,101 @@
                 <v-card flat>
                   <v-card-text>
                     <h2 class="text-xs-left">Setting Account</h2>
-                    <v-card>
-                      <v-card-text> 
-                        <p>Name: AAAAAAAAA
-                        <br>Language: AAAAAAAAA
-                        <br>Schedule Matching: 90%</p>
+                    
+                    <v-card flat v-if='showchange1stsmall'>
+                      <v-card-text>
+                        <v-layout row>
+                          <v-flex xs6>
+                          <h3 class="text-xs-right">Language you want to learn: </h3>
+                          </v-flex>
+                          <v-btn v-on:click="change1st">Change</v-btn>
+                        </v-layout>
                       </v-card-text>
                     </v-card>
-                    <v-card>
-                      <v-card-text> 
-                        <p>Name: BBBBBBBB
-                        <br>Language: BBBBBBBBB
-                        <br>Schedule Matching: 80%</p>
+                    
+                    <v-card flat v-if='showchange1stbig'>
+                      <v-card-text>
+                        <v-layout row>
+                          <v-flex xs6>
+                          <h3 class="text-xs-right">Language you want to learn: </h3>
+                          </v-flex>
+                          <v-flex xs6>
+                          <v-overflow-btn
+                            :items="dropdown_want_to_learn1"
+                            label="Language you want to learn"
+                          ></v-overflow-btn>
+                          <v-overflow-btn
+                            :items="dropdown_want_level1"
+                            label="Language proficiency"
+                          ></v-overflow-btn>
+                          <v-btn v-on:click="confirm1st">Confirm</v-btn>
+                          </v-flex>
+                        </v-layout>
                       </v-card-text>
                     </v-card>
+
+                    <v-card flat v-if='showchange2ndsmall'>
+                      <v-card-text>
+                        <v-layout row>
+                          <v-flex xs6>
+                          <h3 class="text-xs-right">2nd language you want to learn: </h3>
+                          </v-flex>
+                          <v-btn v-on:click="change2nd">Change/Set</v-btn>
+                        </v-layout>
+                      </v-card-text>
+                    </v-card>
+
+                    <v-card flat v-if='showchange2ndbig'>
+                      <v-card-text>
+                        <v-layout row>
+                          <v-flex xs6>
+                          <h3 class="text-xs-right">2nd language you want to learn: </h3>
+                          </v-flex>
+                          <v-flex xs6>
+                          <v-overflow-btn
+                            :items="dropdown_want_to_learn2"
+                            label="2nd Language you want to learn (optional)"
+                          ></v-overflow-btn>
+                          <v-overflow-btn
+                            :items="dropdown_want_level2"
+                            label="Language proficiency"
+                          ></v-overflow-btn>
+                          <v-btn v-on:click="confirm2nd">Confirm</v-btn>
+                          </v-flex>
+                        </v-layout>
+                      </v-card-text>
+                    </v-card>
+                    
+                    <v-card flat v-if='showchangeemailsmall'>
+                      <v-card-text>
+                        <v-layout row>
+                          <v-flex xs6>
+                          <h3 class="text-xs-right">2nd email address: </h3>
+                          </v-flex>
+                          <v-btn v-on:click="changeemail">Change/Set</v-btn>
+                        </v-layout>
+                      </v-card-text>
+                    </v-card>
+
+                    <v-card flat v-if='showchangeemailbig'>
+                      <v-card-text>
+                        <v-layout row>
+                          <v-flex xs6>
+                          <h3 class="text-xs-right">2nd email address: </h3>
+                          </v-flex>
+                          <v-flex xs6>
+                          <v-text-field
+                            v-model="email2"
+                            label="Second email address"
+                            placeholder=""
+                            box>
+                          </v-text-field>
+                          <v-btn v-on:click="confirmemail">Confirm</v-btn>
+                          </v-flex>
+                        </v-layout>
+                      </v-card-text>
+                    </v-card>
+
                   </v-card-text>
                 </v-card>
               </v-tab-item>
@@ -395,8 +476,14 @@ export default {
     showmembersmall3: true,
     showmemberbig1: false,
     showmemberbig2: false,
-    showmemberbig3: false
+    showmemberbig3: false,
 
+    showchange1stsmall: true,
+    showchange1stbig: false,
+    showchange2ndsmall: true,
+    showchange2ndbig: false,
+    showchangeemailsmall: true,
+    showchangeemailbig: false,
 
     }
   },
@@ -468,6 +555,41 @@ export default {
       this.showmemberbig3=false
     },
 
+    change1st: function (){
+      this.showchange1stsmall=false
+      this.showchange1stbig=true
+    },
+
+    change2nd: function (){
+      this.showchange2ndsmall=false
+      this.showchange2ndbig=true
+    },
+
+    changeemail: function (){
+      this.showchangeemailsmall=false
+      this.showchangeemailbig=true
+    },
+
+    confirm1st: function (){
+      this.showchange1stsmall=true
+      this.showchange1stbig=false
+      this.$router.push('/mypage')
+      alert("Language changed")
+    },
+
+    confirm2nd: function (){
+      this.showchange2ndsmall=true
+      this.showchange2ndbig=false
+      this.$router.push('/mypage')
+      alert("2nd Language changed")
+    },
+
+    confirmemail: function (){
+      this.showchangeemailsmall=true
+      this.showchangeemailbig=false
+      this.$router.push('/mypage')
+      alert("2nd email changed")
+    },
 
     signout: function () {
       firebase.auth().signOut().then(() => {
