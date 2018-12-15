@@ -38,7 +38,7 @@
             v-model="password"
             placeholder="password">
             </v-text-field>
-            <h3 v-if="alart1"> <font color="red"> Input e-mail address and pathword </font> </h3>
+            <h3 v-if="alart1"> <font color="red"> Input @m.titech.ac.jp e-mail address and password </font> </h3>
             <v-btn v-on:click="gotopersonalinfo">Next</v-btn>
           </v-card-text>
         </v-card>
@@ -149,6 +149,7 @@
               :items="dropdown_want_level2"
               label="Language proficiency"
             ></v-overflow-btn>
+            <h3 v-if="alart3"> <font color="red"> Select language which you want to learn </font> </h3>
             <v-btn v-on:click="backtoschedule">Back</v-btn>
             <v-btn v-on:click="gotolanguageteach">Next</v-btn>
           </v-card-text>
@@ -187,6 +188,7 @@
               :items="dropdown_teach_level3"
               label="Language proficiency"
             ></v-overflow-btn>
+            <h3 v-if="alart4"> <font color="red"> Select language which you can teach </font> </h3>
             <v-btn v-on:click="backtolanguagewant">Back</v-btn>
             <v-btn v-on:click="gotofindinfo">Next</v-btn>
           </v-card-text>
@@ -280,6 +282,8 @@ export default{
 
       alart1: false,
       alart2: false,
+      alart3: false,
+      alart4: false,
 
       showagreement: true,
       shownewaccount: false,
@@ -406,7 +410,8 @@ export default{
       const value2 = this.password && this.password.trim()
       if (
         value1 != null && value1 != "" &&
-        value2 != null && value2 != "") {
+        value2 != null && value2 != "" &&
+        this.titechemail.match('@m.titech.ac.jp') != null ) {
           this.shownewaccount=false
           this.showpersnalinfo=true
           this.alart1 = false
@@ -455,8 +460,16 @@ export default{
     },
 
     gotolanguageteach: function() {
-      this.showlanguagewant=false
-      this.showlanguageteach=true
+      if (
+        this.language_want_to_learn1 != null &&
+        this.proficiency_want1 != null) {
+          this.showlanguagewant=false
+          this.showlanguageteach=true
+          this.alart3 = false
+        }
+      else {
+        this.alart3 = true
+      }
     },
     backtolanguagewant: function() {
       this.showlanguagewant=true
@@ -464,8 +477,16 @@ export default{
     },
 
     gotofindinfo: function() {
-      this.showlanguageteach=false
-      this.showfindinfo=true
+      if (
+        this.language_teach1 != null &&
+        this.proficiency_teach1 != null ){
+          this.showlanguageteach=false
+          this.showfindinfo=true
+          this.alart4 = false
+        }
+      else {
+        this.alart4 = true
+      }
     },
     backtolanguageteach: function() {
       this.showlanguageteach=true
