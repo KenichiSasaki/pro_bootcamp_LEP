@@ -29,6 +29,7 @@
           <v-card-text>
             <h1> Account Information </h1>
             <v-text-field 
+            type="string"
             v-model="titechemail" 
             placeholder="Titech email address">
             </v-text-field>
@@ -37,6 +38,7 @@
             v-model="password"
             placeholder="password">
             </v-text-field>
+            <h3 v-if="alart1"> <font color="red"> Input e-mail address and pathword </font> </h3>
             <v-btn v-on:click="gotopersonalinfo">Next</v-btn>
           </v-card-text>
         </v-card>
@@ -55,7 +57,7 @@
             </v-text-field>
              <v-text-field
               v-model="email2"
-              label="Second email address"
+              label="Second email address (optional)"
               placeholder=""
               box>
             </v-text-field>
@@ -78,7 +80,7 @@
             </v-text-field>
             <v-text-field
               v-model="department"
-              label="Department"
+              label="Department (optional)"
               placeholder=""
               box>
             </v-text-field>
@@ -87,6 +89,7 @@
               :items="dropdown_degree"
               label="Degree"
             ></v-overflow-btn>
+            <h3 v-if="alart2"> <font color="red"> Fill in the forms </font> </h3>
             <v-btn v-on:click="backtonewaccount">Back</v-btn>
             <v-btn v-on:click="gotoschedule">Next</v-btn>
           </v-card-text>
@@ -221,7 +224,7 @@
             <p> Student ID: <font size="4" face="bold"> {{studentid}} </font> </p>
             <p> Gender: <font size="4" face="bold"> {{gender}} </font> </p>
             <p> Nationality: <font size="4" face="bold"> {{nationality}} </font> </p>
-            <p> Depertment: <font size="4" face="bold"> {{department}} </font> </p>
+            <p> Department: <font size="4" face="bold"> {{department}} </font> </p>
             <p> Degree: <font size="4" face="bold"> {{degree}} </font> </p>
             <h2 class="mt-5 mb-3"> Language You Want to Learn </h2>
             <p> Language you want to learn: <font size="4" face="bold"> {{language_want_to_learn1}} </font>, <font size="4" face="bold"> {{proficiency_want1}} </font> </p>
@@ -260,6 +263,7 @@ export default{
       studentid: null,
       gender: null,
       nationality: null,
+      department: null,
       degree: null,
       language_want_to_learn1: null,
       proficiency_want1: null,
@@ -273,6 +277,9 @@ export default{
       proficiency_teach3: null,
       interest: null,
       comments: null,
+
+      alart1: false,
+      alart2: false,
 
       showagreement: true,
       shownewaccount: false,
@@ -395,8 +402,18 @@ export default{
     },
     
     gotopersonalinfo: function() {
-      this.shownewaccount=false
-      this.showpersnalinfo=true
+      const value1 = this.titechemail && this.titechemail.trim()
+      const value2 = this.password && this.password.trim()
+      if (
+        value1 != null && value1 != "" &&
+        value2 != null && value2 != "") {
+          this.shownewaccount=false
+          this.showpersnalinfo=true
+          this.alart1 = false
+      }
+      else {
+        this.alart1 = true
+      }
     },
     backtonewaccount: function() {
       this.shownewaccount=true
@@ -404,8 +421,24 @@ export default{
     },
 
     gotoschedule: function() {
-      this.showpersnalinfo=false
-      this.showschedule=true
+      const value1 = this.username && this.username.trim()
+      const value2 = this.studentid && this.studentid.trim()
+      const value3 = this.gender
+      const value4 = this.nationality && this.nationality.trim()
+      const value5 = this.degree
+      if (
+        value1 != null && value1 != "" &&
+        value2 != null && value2 != "" &&
+        value3 != null && 
+        value4 != null && value4 != "" &&
+        value5 != null) {
+          this.showpersnalinfo=false
+          this.showschedule=true
+          this.alart2 = false
+          }
+      else {
+        this.alart2 = true
+      }
     },
     backtopersonalinfo: function() {
       this.showpersnalinfo=true
@@ -449,15 +482,17 @@ export default{
     },
     
     signUp: function () {
-      firebase.auth().createUserWithEmailAndPassword(this.titechemail, this.password)
-      .then(username => {
-        alert('Create account:', this.titechemail);
-        console.log(username);
-        this.$router.push('/mypage')
-      })
-      .catch(error => {
-        alert(error.message);
-      });
+      
+        firebase.auth().createUserWithEmailAndPassword(this.titechemail, this.password)
+        .then(username => {
+          alert('Create account:', this.titechemail);
+          console.log(username);
+          this.$router.push('/mypage')
+        })
+        .catch(error => {
+          alert(error.message);
+        });
+      
     }
   }
 };
