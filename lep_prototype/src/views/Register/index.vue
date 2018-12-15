@@ -21,13 +21,13 @@
               <v-radio label="I agree" value="agreement-1"></v-radio>
               <v-radio label="I do not agree" value="agreement-2"></v-radio>
             </v-radio-group>
-            <v-btn v-on:click="gotonewaccount">Next</v-btn>
+            <v-btn v-on:click="gotonewaccount">Create New Account</v-btn>
           </v-card-text>
         </v-card>
 
         <v-card flat v-if='shownewaccount'>
           <v-card-text>
-            <h1> Create New Account</h1>
+            <h1> Account Information </h1>
             <v-text-field 
             v-model="titechemail" 
             placeholder="Titech email address">
@@ -60,25 +60,30 @@
               box>
             </v-text-field>
             <v-text-field
+              v-model="studentid"
               label="Student ID"
               placeholder=""
               box>
             </v-text-field>
             <v-overflow-btn
+              v-model="gender"
               :items="dropdown_gender"
               label="Gender"
             ></v-overflow-btn>
             <v-text-field
+              v-model="nationality"
               label="Nationality"
               placeholder=""
               box>
             </v-text-field>
             <v-text-field
+              v-model="department"
               label="Department"
               placeholder=""
               box>
             </v-text-field>
             <v-overflow-btn
+              v-model="degree"
               :items="dropdown_degree"
               label="Degree"
             ></v-overflow-btn>
@@ -105,10 +110,10 @@
                 <td><v-checkbox v-model="props.item.fridayValue"></v-checkbox></td>
               </template>
             </v-data-table>
-            <v-switch
-              :label="`Weekend`"
+            <v-checkbox
+              :label="`Weekend: ${weekends[switch1].toString()}`"
               v-model="switch1"
-            ></v-switch>
+            ></v-checkbox>
             <v-overflow-btn
               :items="dropdown_freaquency"
               label="Preferred frequency per one week"
@@ -120,20 +125,24 @@
 
         <v-card flat v-if="showlanguagewant">
           <v-card-text>
-            <h1> Language Want to Learn </h1>
+            <h1> Language You Want to Learn </h1>
             <v-overflow-btn
+              v-model="language_want_to_learn1"
               :items="dropdown_want_to_learn1"
               label="Language you want to learn"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="proficiency_want1"
               :items="dropdown_want_level1"
               label="Language proficiency"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="language_want_to_learn2"
               :items="dropdown_want_to_learn2"
               label="2nd Language you want to learn (optional)"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="proficiency_want2"
               :items="dropdown_want_level2"
               label="Language proficiency"
             ></v-overflow-btn>
@@ -146,26 +155,32 @@
           <v-card-text>
             <h1> Language You Can Teach</h1>
             <v-overflow-btn
+              v-model="language_teach1"
               :items="dropdown_teach1"
               label="Language you can teach"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="proficiency_teach1"
               :items="dropdown_teach_level1"
               label="Language proficiency"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="language_teach2"
               :items="dropdown_teach2"
               label="2nd Language you can teach (optional)"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="proficiency_teach2"
               :items="dropdown_teach_level2"
               label="Language proficiency"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="language_teach3"
               :items="dropdown_teach3"
               label="3rd Language you can teach (optional)"
             ></v-overflow-btn>
             <v-overflow-btn
+              v-model="proficiency_teach3"
               :items="dropdown_teach_level3"
               label="Language proficiency"
             ></v-overflow-btn>
@@ -178,11 +193,13 @@
           <v-card-text>
             <h1 class="mb-3"> Information for finding partner</h1>
             <v-text-field
+              v-model="interest"
               label="Hobby and Interest"
               placeholder=""
               box>
             </v-text-field>
             <v-textarea
+              v-model="comments"
               box
               name="input-7-4"
               label="Other Comments"
@@ -196,8 +213,26 @@
         <v-card flat v-if="showconfirm">
           <v-card-text>
             <h1 class="mb-3"> Confirmation</h1>
-            <h3> Titech email address: <font color="red"> {{titechemail}} </font> </h3>
-            <h3> User Name: <font color="red"> {{username}} </font> </h3>
+            <h2 class="mb-3"> Account Information </h2>
+            <p> Titech email address: <font size="4" face="bold"> {{titechemail}} </font> </p>
+            <p> User Name: <font size="4" face="bold"> {{username}} </font> </p>
+            <h2 class="mt-5 mb-3"> Personal Information </h2>
+            <p> 2nd email address: <font size="4" face="bold"> {{email2}} </font> </p>
+            <p> Student ID: <font size="4" face="bold"> {{studentid}} </font> </p>
+            <p> Gender: <font size="4" face="bold"> {{gender}} </font> </p>
+            <p> Nationality: <font size="4" face="bold"> {{nationality}} </font> </p>
+            <p> Depertment: <font size="4" face="bold"> {{department}} </font> </p>
+            <p> Degree: <font size="4" face="bold"> {{degree}} </font> </p>
+            <h2 class="mt-5 mb-3"> Language You Want to Learn </h2>
+            <p> Language you want to learn: <font size="4" face="bold"> {{language_want_to_learn1}} </font>, <font size="4" face="bold"> {{proficiency_want1}} </font> </p>
+            <p> 2nd language you want to learn: <font size="4" face="bold"> {{language_want_to_learn2}} </font>, <font size="4" face="bold"> {{proficiency_want2}} </font> </p>
+            <h2 class="mt-5 mb-3"> Language You Can Teach </h2>
+            <p> Language you can teach: <font size="4" face="bold"> {{language_teach1}} </font>, <font size="4" face="bold"> {{proficiency_teach1}} </font> </p>
+            <p> 2nd language you can teach: <font size="4" face="bold"> {{language_teach2}} </font>, <font size="4" face="bold"> {{proficiency_teach2}} </font> </p>
+            <p> 3rd language you can teach: <font size="4" face="bold"> {{language_teach3}} </font>, <font size="4" face="bold"> {{proficiency_teach3}} </font> </p>
+            <h2 class="mt-5 mb-3"> Information for Finding Partner </h2>
+            <p> Hobby and Interest: <font size="4" face="bold"> {{interest}} </font> </p>
+            <p class="mb-5 mb-3"> Other Comments: <font size="4" face="bold"> {{comments}} </font> </p>
             <v-btn v-on:click="backtofindinfo">Back</v-btn>
             <v-btn v-on:click="signUp">Create New Account</v-btn>
           </v-card-text>
@@ -216,11 +251,28 @@ export default{
 
   data() {
     return {
+      agreement: null,
 
       titechemail: null,
       username: null,
       password: null,
-      agreement: null,
+      email2: null,
+      studentid: null,
+      gender: null,
+      nationality: null,
+      degree: null,
+      language_want_to_learn1: null,
+      proficiency_want1: null,
+      language_want_to_learn2: null,
+      proficiency_want2: null,
+      language_teach1: null,
+      proficiency_teach1: null,
+      language_teach2: null,
+      proficiency_teach2: null,
+      language_teach3: null,
+      proficiency_teach3: null,
+      interest: null,
+      comments: null,
 
       showagreement: true,
       shownewaccount: false,
@@ -231,6 +283,7 @@ export default{
       showfindinfo: false,
 
       switch1: false,
+      weekends: {true:"available", false:"unavailable"},
 
       dropdown_gender: ['Male','Female','Others'],
 
@@ -325,6 +378,7 @@ export default{
   },
 
   methods: {
+
     backhome(){
       this.$router.push('/home')
     },
