@@ -97,7 +97,7 @@
           <v-card-text>
             <h1> Language Want to Learn </h1>
             <v-overflow-btn
-              :items="dropdown_want_to_learn11"
+              :items="dropdown_want_to_learn1"
               label="Language you want to learn"
             ></v-overflow-btn>
             <v-overflow-btn
