@@ -1,6 +1,9 @@
 export default {
     countries:
-    ["Afghanistan",
+    ["Japan",
+"China",
+"Korea",
+"Afghanistan",
 "Aland Islands",
 "Albania",
 "Algeria",

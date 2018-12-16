@@ -2,6 +2,7 @@
   <div class="home">
     <v-content>
       <v-container>
+        {{userDetail.titechemail}}
         
         <v-layout align-center>
           <v-flex xs12>
@@ -526,6 +527,9 @@ export default {
     return {
     date: new Date().toISOString().substr(0,10),
     
+    //For identification
+    register_email: null,
+    
     languages: languages.languages,
     dropdown_want_level1: ['A0','A1','A2','B1','B2','C1','C2'],
     dropdown_want_level2: ['A0','A1','A2','B1','B2','C1','C2'],
@@ -555,17 +559,44 @@ export default {
     showchangeemailsmall: true,
     showchangeemailbig: false,
 
+    allprofile: null,
+    profile: {},
+    userProfile: null,
+    }
+  },
+  computed: {
+    userDetail() {
+      if(this.userProfile == null || this.allprofile == null){
+        return null;
+      }
+
+      var result = this.allprofile.filter(profile => profile.titechemail == this.userProfile.email);
+      
+      if(result.length > 0){
+        return result[0];
+      }
+
+      return null;
     }
   },
 
   beforeCreate() {
-    if(firebase.auth().currentUser){
-      console.log(firebase.auth().currentUser)
-    }else{
-      alert("You need to login to see this page.")
-      this.$router.push("/")
-    }
 
+
+  },
+  
+  created() {
+    firebase.auth().onAuthStateChanged(user => {
+      if(user){
+        this.userProfile = user;
+        console.log(this.userProfile)
+      }else{
+        alert("You need to login to see this page.")
+        this.$router.push("/")
+      }
+    })
+
+    this.getallprofile();
   },
 
   methods: {
@@ -663,6 +694,28 @@ export default {
         alert('LogOut!')
         this.$router.push('/home')
       });
+    },
+    getallprofile: function (){
+      var db = firebase.firestore();
+      db.collection("users").get().then((querySnapshot) => {
+        var result = querySnapshot.docs.map((doc) => {
+          return doc.data()
+        });
+        console.log(result)
+        this.allprofile = result
+      });
+    },
+    getmyid: function(){
+      var user = firebase.auth().currentUser;
+      console.log(user.email)
+      return user.email;
+    },
+    getmyprofile: function(){
+      var db = firebase.firestore();
+      var allprof = db.collection("users");
+      var email = this.getmyid();
+      var prof = allprof.where("titechemail", "==", email)
+      this.profile = prof
     }
   }  
 };

@@ -305,7 +305,7 @@ export default{
       password: null,
       
       username: null,
-      email2:null,
+      email2: null,
       stundentid: null,
       
       gender: null,
@@ -556,29 +556,30 @@ export default{
       firebase.auth().createUserWithEmailAndPassword(this.titechemail, this.password)
       .then(username => {
         var db = firebase.firestore();
-        db.collection("user").add({
-          titechemail: "titechemail",
-          username:"username",
-          email2: "emial2",
-          stundentid: "studentid",
-          gender: "gender",
-          nation: "nation",
-          major: "major",
-          degree: "degree",
-          weekend: "weekend",
-          frequency: "frequency",
-          learnlang1: "learnlang1",
-          learnlang1level: "learnlang1level",
-          learnlang2: "learnlang2",
-          learnlang2level: "learnlang2level",
-          teachlang1: "teachlang1",
-          teachlang1level: "teachlang1level",
-          teachlang2: "teachlang2",
-          teachlang2level: "teachlang2level",
-          teachlang3: "teachlang3",
-          teachlang3level: "teachlang3level",
-          hobbyinterest: "hobbyinterest",
-          comments: "comments"
+        db.collection("users").add({
+          titechemail: this.titechemail,
+          username:this.username,
+          email2: this.email2,
+          stundentid: this.studentid,
+          gender: this.gender,
+          nation: this.nation,
+          major: this.major,
+          degree: this.degree,
+          weekend: this.weekend,
+          //campus: this.campus,
+          frequency: this.frequency,
+          learnlang1: this.learnlang1,
+          learnlang1level: this.learnlang1level,
+          learnlang2: this.learnlang2,
+          learnlang2level: this.learnlang2level,
+          teachlang1: this.teachlang1,
+          teachlang1level: this.teachlang1level,
+          teachlang2: this.teachlang2,
+          teachlang2level: this.teachlang2level,
+          teachlang3: this.teachlang3,
+          teachlang3level: this.teachlang3level,
+          hobbyinterest: this.hobbyinterest,
+          comments: this.comments
           })
           .then(function(docRef) {
           console.log("Document written with ID: ", docRef.id);
