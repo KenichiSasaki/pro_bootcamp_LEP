@@ -4,7 +4,7 @@ export default {
     "Physics",
     "Chemistry",
     "Earth and Planetary Sciences",
-    "Mechnical Engineering",
+    "Mechanical Engineering",
     "System and Control Engineering",
     "Electrical and Electronic Engineering",
     "Information and Communications Engineering",

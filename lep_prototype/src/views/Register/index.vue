@@ -74,7 +74,7 @@
             
             <v-text-field
               v-model="username"
-              label="Name"
+              label="User Name"
               placeholder=""
               box>
             </v-text-field>
@@ -560,7 +560,7 @@ export default{
           titechemail: this.titechemail,
           username: this.username,
           email2: this.email2,
-          stundentid: this.studentid,
+          studentid: this.studentid,
           gender: this.gender,
           nation: this.nation,
           major: this.major,

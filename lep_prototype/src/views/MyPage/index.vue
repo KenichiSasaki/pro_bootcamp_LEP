@@ -338,7 +338,7 @@
                             <br>2nd email:
                             <br>Student ID:
                             <br>Gender:
-                            <br>Nationaliy:
+                            <br>Nationality:
                             <br>Department:
                             <br>Degree:
                             <br>Schedule:
