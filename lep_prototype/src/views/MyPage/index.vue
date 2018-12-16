@@ -327,8 +327,72 @@
               <v-tab-item :id="'tab-4'">
                 <v-card flat>
                   <v-card-text>
+                    <h2 class="text-xs-left">Account information</h2>
+                    <v-card flat>
+                      <v-card-text>
+                        <v-layout row>
+                          <v-flex xs4>
+                            <p class="text-xs-right">User Name:
+                            <br>Gender:
+                            <br>Nationaliy:
+                            <br>Department:
+                            <br>Degree:
+                            <br>Schedule:
+                            <br>Weekend:
+                            <br>Campus:
+                            <br>Preferred frequency:
+                            <br>Language want to learn (level):
+                            <br>2nd Language want to learn (level):
+                            <br>Language you can teach (level):
+                            <br>2nd Language you can teach (level):
+                            <br>3rd Language you can teach (level):
+                            <br>Hobby and Interest:
+                            <br>Comments:
+                            <br></p>
+                          </v-flex>
+                          <v-flex xs6>
+                            <p class="text-xs-left">[User Name]:
+                            <br>[Gender]:
+                            <br>[Nationaliy]:
+                            <br>[Department]:
+                            <br>[Degree]:
+                            <br>[Schedule]:
+                            <br>[Weekend]:
+                            <br>[Campus]:
+                            <br>[Preferred frequency]:
+                            <br>[Language want to learn (level)]:
+                            <br>[2nd Language want to learn (level)]:
+                            <br>[Language you can teach (level)]:
+                            <br>[2nd Language you can teach (level)]:
+                            <br>[3rd Language you can teach (level)]:
+                            <br>[Hobby and Interest]:
+                            <br>[Comments]:
+                            <br></p>
+                          </v-flex>
+                          <v-flex xs2>
+                            <p class="text-xs-left">[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br>[Edit]
+                            <br></p>
+                          </v-flex>
+                        </v-layout>
+                      </v-card-text>
+                    </v-card>
+
                     <h2 class="text-xs-left">Setting Account</h2>
-                    
                     <v-card flat v-if='showchange1stsmall'>
                       <v-card-text>
                         <v-layout row>
