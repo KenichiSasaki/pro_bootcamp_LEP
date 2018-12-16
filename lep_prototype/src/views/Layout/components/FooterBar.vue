@@ -18,7 +18,7 @@
           dark
           icon
         >
-          <a href="https://www.facebook.com/Tokyo.Tech.ACTION"><v-icon size="24px">fab fa-facebook</v-icon></a>
+          <a href="https://www.facebook.com/Tokyo.Tech.ACTION" target="_blanck"><v-icon size="24px">fab fa-facebook</v-icon></a>
         </v-btn>
 
         <v-btn
@@ -27,7 +27,7 @@
           dark
           icon
         >
-          <a href="https://twitter.com/titech_action"><v-icon size="24px">fab fa-twitter</v-icon></a>
+          <a href="https://twitter.com/titech_action" target="_blanck"><v-icon size="24px">fab fa-twitter</v-icon></a>
         </v-btn>
         <br>
         <strong class="subheading">Get connected with email!: tandem.titech@gmail.com</strong>
