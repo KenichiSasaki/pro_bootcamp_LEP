@@ -350,7 +350,7 @@
                             <br>Comments:
                             <br></p>
                           </v-flex>
-                          <v-flex xs6>
+                          <v-flex xs7>
                             <p class="text-xs-left">[User Name]:
                             <br>[Gender]:
                             <br>[Nationaliy]:
@@ -369,7 +369,7 @@
                             <br>[Comments]:
                             <br></p>
                           </v-flex>
-                          <v-flex xs2>
+                          <v-flex xs1>
                             <p class="text-xs-left">[Edit]
                             <br>[Edit]
                             <br>[Edit]
