@@ -38,7 +38,7 @@
             v-model="password"
             placeholder="password">
             </v-text-field>
-            <h3 v-if="alart1"> <font color="red"> Input @m.titech.ac.jp e-mail address and password </font> </h3>
+            <h3 v-if="alart1"> <font color="red"> Input 'titech.ac.jp' e-mail address and password </font> </h3>
             <v-btn v-on:click="gotopersonalinfo">Next</v-btn>
           </v-card-text>
         </v-card>
@@ -411,7 +411,7 @@ export default{
       if (
         value1 != null && value1 != "" &&
         value2 != null && value2 != "" &&
-        this.titechemail.match('@m.titech.ac.jp') != null ) {
+        this.titechemail.match('titech.ac.jp') != null ) {
           this.shownewaccount=false
           this.showpersnalinfo=true
           this.alart1 = false
