@@ -348,7 +348,7 @@
                           </v-flex>
                           <v-flex xs6>
                           <v-overflow-btn
-                            :items="dropdown_want_to_learn1"
+                            :items="languages"
                             label="Language you want to learn"
                           ></v-overflow-btn>
                           <v-overflow-btn
@@ -380,7 +380,7 @@
                           </v-flex>
                           <v-flex xs6>
                           <v-overflow-btn
-                            :items="dropdown_want_to_learn2"
+                            :items="languages"
                             label="2nd Language you want to learn (optional)"
                           ></v-overflow-btn>
                           <v-overflow-btn
@@ -450,6 +450,7 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 import firebase from "firebase";
+import languages from "../../api/db/languages.js"
 
 export default {
   name: 'home',
@@ -460,6 +461,11 @@ export default {
   data() {
     return {
     date: new Date().toISOString().substr(0,10),
+    
+    languages: languages.languages,
+    dropdown_want_level1: ['A0','A1','A2','B1','B2','C1','C2'],
+    dropdown_want_level2: ['A0','A1','A2','B1','B2','C1','C2'],
+
     menu: false,
     time: null,
     menu2: false,

@@ -72,18 +72,18 @@
               :items="dropdown_gender"
               label="Gender"
             ></v-overflow-btn>
-            <v-text-field
-              v-model="nationality"
+
+            <v-overflow-btn
+              v-model="nation"
+              :items="countries"
               label="Nationality"
-              placeholder=""
-              box>
-            </v-text-field>
-            <v-text-field
-              v-model="department"
-              label="Department (optional)"
-              placeholder=""
-              box>
-            </v-text-field>
+            ></v-overflow-btn>
+            <v-overflow-btn
+              v-model="major"
+              :items="department"
+              label="Department"
+            ></v-overflow-btn>
+
             <v-overflow-btn
               v-model="degree"
               :items="dropdown_degree"
@@ -113,11 +113,14 @@
                 <td><v-checkbox v-model="props.item.fridayValue"></v-checkbox></td>
               </template>
             </v-data-table>
+
             <v-checkbox
-              :label="`Weekend: ${weekends[switch1].toString()}`"
-              v-model="switch1"
+              :label="`Weekend: ${weekends[weekend].toString()}`"
+              v-model="weekend"
             ></v-checkbox>
+
             <v-overflow-btn
+              v-model="frequency"
               :items="dropdown_freaquency"
               label="Preferred frequency per one week"
             ></v-overflow-btn>
@@ -130,22 +133,22 @@
           <v-card-text>
             <h1> Language You Want to Learn </h1>
             <v-overflow-btn
-              v-model="language_want_to_learn1"
-              :items="dropdown_want_to_learn1"
+              v-model="learnlang1"
+              :items="languages"
               label="Language you want to learn"
             ></v-overflow-btn>
             <v-overflow-btn
-              v-model="proficiency_want1"
+              v-model="learnlang1level"
               :items="dropdown_want_level1"
               label="Language proficiency"
             ></v-overflow-btn>
             <v-overflow-btn
-              v-model="language_want_to_learn2"
-              :items="dropdown_want_to_learn2"
+              v-model="learnlang2"
+              :items="languages"
               label="2nd Language you want to learn (optional)"
             ></v-overflow-btn>
             <v-overflow-btn
-              v-model="proficiency_want2"
+              v-model="learnlang2level"
               :items="dropdown_want_level2"
               label="Language proficiency"
             ></v-overflow-btn>
@@ -159,32 +162,32 @@
           <v-card-text>
             <h1> Language You Can Teach</h1>
             <v-overflow-btn
-              v-model="language_teach1"
-              :items="dropdown_teach1"
+              v-model="teachlang1"
+              :items="languages"
               label="Language you can teach"
             ></v-overflow-btn>
             <v-overflow-btn
-              v-model="proficiency_teach1"
+              v-model="teachlang1level"
               :items="dropdown_teach_level1"
               label="Language proficiency"
             ></v-overflow-btn>
             <v-overflow-btn
-              v-model="language_teach2"
-              :items="dropdown_teach2"
+              v-model="teachlang2"
+              :items="languages"
               label="2nd Language you can teach (optional)"
             ></v-overflow-btn>
             <v-overflow-btn
-              v-model="proficiency_teach2"
+              v-model="teachlang2level"
               :items="dropdown_teach_level2"
               label="Language proficiency"
             ></v-overflow-btn>
             <v-overflow-btn
-              v-model="language_teach3"
-              :items="dropdown_teach3"
+              v-model="teachlang3"
+              :items="languages"
               label="3rd Language you can teach (optional)"
             ></v-overflow-btn>
             <v-overflow-btn
-              v-model="proficiency_teach3"
+              v-model="teachlang3level"
               :items="dropdown_teach_level3"
               label="Language proficiency"
             ></v-overflow-btn>
@@ -198,7 +201,7 @@
           <v-card-text>
             <h1 class="mb-3"> Information for finding partner</h1>
             <v-text-field
-              v-model="interest"
+              v-model="hobbyinterest"
               label="Hobby and Interest"
               placeholder=""
               box>
@@ -225,18 +228,18 @@
             <p> 2nd email address: <font size="4" face="bold"> {{email2}} </font> </p>
             <p> Student ID: <font size="4" face="bold"> {{studentid}} </font> </p>
             <p> Gender: <font size="4" face="bold"> {{gender}} </font> </p>
-            <p> Nationality: <font size="4" face="bold"> {{nationality}} </font> </p>
-            <p> Department: <font size="4" face="bold"> {{department}} </font> </p>
+            <p> Nationality: <font size="4" face="bold"> {{nation}} </font> </p>
+            <p> Department: <font size="4" face="bold"> {{major}} </font> </p>
             <p> Degree: <font size="4" face="bold"> {{degree}} </font> </p>
             <h2 class="mt-5 mb-3"> Language You Want to Learn </h2>
-            <p> Language you want to learn: <font size="4" face="bold"> {{language_want_to_learn1}} </font>, <font size="4" face="bold"> {{proficiency_want1}} </font> </p>
-            <p> 2nd language you want to learn: <font size="4" face="bold"> {{language_want_to_learn2}} </font>, <font size="4" face="bold"> {{proficiency_want2}} </font> </p>
+            <p> Language you want to learn: <font size="4" face="bold"> {{learnlang1}} </font>, <font size="4" face="bold"> {{learnlang1level}} </font> </p>
+            <p> 2nd language you want to learn: <font size="4" face="bold"> {{learnlang2}} </font>, <font size="4" face="bold"> {{learnlang2level}} </font> </p>
             <h2 class="mt-5 mb-3"> Language You Can Teach </h2>
-            <p> Language you can teach: <font size="4" face="bold"> {{language_teach1}} </font>, <font size="4" face="bold"> {{proficiency_teach1}} </font> </p>
-            <p> 2nd language you can teach: <font size="4" face="bold"> {{language_teach2}} </font>, <font size="4" face="bold"> {{proficiency_teach2}} </font> </p>
-            <p> 3rd language you can teach: <font size="4" face="bold"> {{language_teach3}} </font>, <font size="4" face="bold"> {{proficiency_teach3}} </font> </p>
+            <p> Language you can teach: <font size="4" face="bold"> {{teachlang1}} </font>, <font size="4" face="bold"> {{teachlang1level}} </font> </p>
+            <p> 2nd language you can teach: <font size="4" face="bold"> {{teachlang2}} </font>, <font size="4" face="bold"> {{teachlang2level}} </font> </p>
+            <p> 3rd language you can teach: <font size="4" face="bold"> {{teachlang3}} </font>, <font size="4" face="bold"> {{teachlang3level}} </font> </p>
             <h2 class="mt-5 mb-3"> Information for Finding Partner </h2>
-            <p> Hobby and Interest: <font size="4" face="bold"> {{interest}} </font> </p>
+            <p> Hobby and Interest: <font size="4" face="bold"> {{hobbyinterest}} </font> </p>
             <p class="mb-5 mb-3"> Other Comments: <font size="4" face="bold"> {{comments}} </font> </p>
             <v-btn v-on:click="backtofindinfo">Back</v-btn>
             <v-btn v-on:click="signUp">Create New Account</v-btn>
@@ -250,35 +253,51 @@
 
 <script>
 import firebase from "firebase";
+import languages from "../../api/db/languages.js"
+import countries from "../../api/db/countries.js"
+import department from "../../api/db/department.js"
 
 export default{
   name: "register",
-
   data() {
     return {
-      agreement: null,
 
+      languages: languages.languages,
+      countries: countries.countries,
+      department: department.department,
+      
+    //personal info
       titechemail: null,
-      username: null,
       password: null,
-      email2: null,
-      studentid: null,
+      
+      username: null,
+      email2:null,
+      stundentid: null,
+      
       gender: null,
-      nationality: null,
-      department: null,
+      major: null,
+      nation: null,
       degree: null,
-      language_want_to_learn1: null,
-      proficiency_want1: null,
-      language_want_to_learn2: null,
-      proficiency_want2: null,
-      language_teach1: null,
-      proficiency_teach1: null,
-      language_teach2: null,
-      proficiency_teach2: null,
-      language_teach3: null,
-      proficiency_teach3: null,
-      interest: null,
+
+      weekend: false,
+      frequency: null,
+
+      learnlang1: null,
+      learnlang1level: null,
+      learnlang2: null,
+      learnlang2level: null,
+
+      teachlang1: null,
+      teachlang1level: null,
+      teachlang2: null,
+      teachlang2level: null,
+      teachlang3: null,
+      teachlang3level: null,
+
+      hobbyinterest: null,
       comments: null,
+    //
+      agreement: null,
 
       alart1: false,
       alart2: false,
@@ -293,7 +312,6 @@ export default{
       showlanguageteach: false,
       showfindinfo: false,
 
-      switch1: false,
       weekends: {true:"available", false:"unavailable"},
 
       dropdown_gender: ['Male','Female','Others'],
@@ -302,16 +320,11 @@ export default{
 
       dropdown_freaquency: ['Once','Twice','Three times','More'],
   
-      dropdown_want_to_learn1: ['English','Japanese','Other'],
       dropdown_want_level1: ['A0','A1','A2','B1','B2','C1','C2'],
-      dropdown_want_to_learn2: ['English','Japanese','Other'],
       dropdown_want_level2: ['A0','A1','A2','B1','B2','C1','C2'],
       
-      dropdown_teach1: ['English','Japanese','Other'],
       dropdown_teach_level1: ['native','over C1'],
-      dropdown_teach2: ['English','Japanese','Other'],
       dropdown_teach_level2: ['native','over C1'],
-      dropdown_teach3: ['English','Japanese','Other'],
       dropdown_teach_level3: ['native','over C1'],
       
       headers:[
@@ -429,13 +442,13 @@ export default{
       const value1 = this.username && this.username.trim()
       const value2 = this.studentid && this.studentid.trim()
       const value3 = this.gender
-      const value4 = this.nationality && this.nationality.trim()
+      const value4 = this.nation
       const value5 = this.degree
       if (
         value1 != null && value1 != "" &&
         value2 != null && value2 != "" &&
         value3 != null && 
-        value4 != null && value4 != "" &&
+        value4 != null &&
         value5 != null) {
           this.showpersnalinfo=false
           this.showschedule=true
@@ -461,8 +474,8 @@ export default{
 
     gotolanguageteach: function() {
       if (
-        this.language_want_to_learn1 != null &&
-        this.proficiency_want1 != null) {
+        this.learnlang1 != null &&
+        this.learnlang1level != null) {
           this.showlanguagewant=false
           this.showlanguageteach=true
           this.alart3 = false
@@ -478,8 +491,8 @@ export default{
 
     gotofindinfo: function() {
       if (
-        this.language_teach1 != null &&
-        this.proficiency_teach1 != null ){
+        this.teachlang1 != null &&
+        this.teachlang1level != null ){
           this.showlanguageteach=false
           this.showfindinfo=true
           this.alart4 = false
@@ -503,17 +516,48 @@ export default{
     },
     
     signUp: function () {
-      
-        firebase.auth().createUserWithEmailAndPassword(this.titechemail, this.password)
-        .then(username => {
+      firebase.auth().createUserWithEmailAndPassword(this.titechemail, this.password)
+      .then(username => {
+        var db = firebase.firestore();
+        db.collection("user").add({
+          titechemail: "titechemail",
+          username:"username",
+          email2: "emial2",
+          stundentid: "studentid",
+          gender: "gender",
+          nation: "nation",
+          major: "major",
+          degree: "degree",
+          weekend: "weekend",
+          frequency: "frequency",
+          learnlang1: "learnlang1",
+          learnlang1level: "learnlang1level",
+          learnlang2: "learnlang2",
+          learnlang2level: "learnlang2level",
+          teachlang1: "teachlang1",
+          teachlang1level: "teachlang1level",
+          teachlang2: "teachlang2",
+          teachlang2level: "teachlang2level",
+          teachlang3: "teachlang3",
+          teachlang3level: "teachlang3level",
+          hobbyinterest: "hobbyinterest",
+          comments: "comments"
+          })
+          .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+          })
+          .catch(function(error) {
+          console.error("Error adding document: ", error);
+          });
+
           alert('Create account:', this.titechemail);
           console.log(username);
           this.$router.push('/mypage')
         })
-        .catch(error => {
-          alert(error.message);
-        });
-      
+
+      .catch(error => {
+        alert(error.message);
+      });
     }
   }
 };
