@@ -55,7 +55,7 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from '@/components/HelloWorld.vue';
 import firebase from "firebase";
 import MyPage from "@/views/MyPage";
 
