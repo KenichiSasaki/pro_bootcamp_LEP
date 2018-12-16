@@ -529,6 +529,7 @@ export default{
           major: this.major,
           degree: this.degree,
           weekend: this.weekend,
+          //campus: this.campus,
           frequency: this.frequency,
           learnlang1: this.learnlang1,
           learnlang1level: this.learnlang1level,
