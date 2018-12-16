@@ -21,9 +21,6 @@ languages in this program.</p>
     <h3>Event</h3>
     <p>Comming soon</p>
 
-    <h4>Feel free to question anything</h4>
-    <p>matsuo.h.ae-lep-support@ml.m.titech.ac.jp</p>
-
   </div>
 </template>
 
