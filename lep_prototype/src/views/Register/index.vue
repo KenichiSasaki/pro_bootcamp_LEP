@@ -76,11 +76,10 @@
               label="Nationality"
             ></v-overflow-btn>
             <v-overflow-btn
-              v-model="department"
+              v-model="major"
               :items="department"
               label="Department"
             ></v-overflow-btn>
-            </v-text-field>
             <v-overflow-btn
               v-model="degree"
               :items="dropdown_degree"
@@ -249,8 +248,8 @@ export default{
       stundentid: null,
       
       gender: null,
+      major: null,
       nation: null,
-      department: null,
       degree: null,
 
       weekend: null,
