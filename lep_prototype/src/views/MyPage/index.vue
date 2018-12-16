@@ -2,7 +2,7 @@
   <div class="home">
     <v-content>
       <v-container>
-        {{userDetail.titechemail}}
+        
         
         <v-layout align-center>
           <v-flex xs12>
@@ -334,6 +334,9 @@
                         <v-layout row>
                           <v-flex xs4>
                             <p class="text-xs-right">User Name:
+                            <br>Titech email:
+                            <br>2nd email:
+                            <br>Student ID:
                             <br>Gender:
                             <br>Nationaliy:
                             <br>Department:
@@ -352,22 +355,25 @@
                             <br></p>
                           </v-flex>
                           <v-flex xs7>
-                            <p class="text-xs-left">[User Name]:
-                            <br>[Gender]:
-                            <br>[Nationaliy]:
-                            <br>[Department]:
-                            <br>[Degree]:
-                            <br>[Schedule]:
-                            <br>[Weekend]:
-                            <br>[Campus]:
-                            <br>[Preferred frequency]:
-                            <br>[Language want to learn (level)]:
-                            <br>[2nd Language want to learn (level)]:
-                            <br>[Language you can teach (level)]:
-                            <br>[2nd Language you can teach (level)]:
-                            <br>[3rd Language you can teach (level)]:
-                            <br>[Hobby and Interest]:
-                            <br>[Comments]:
+                            <p class="text-xs-left">{{userDetail.username}}
+                            <br>{{userDetail.titechemail}}
+                            <br>{{userDetail.email2}}
+                            <br>{{userDetail.studentid}}
+                            <br>{{userDetail.gender}}
+                            <br>{{userDetail.nation}}
+                            <br>{{userDetail.major}}
+                            <br>{{userDetail.degree}}
+                            <br>{{userDetail.username}}
+                            <br>{{userDetail.weekend}}
+                            <br>{{userDetail.campus}}
+                            <br>{{userDetail.frequency}}
+                            <br>{{userDetail.learnlang1}},{{userDetail.learnlang1level}}
+                            <br>{{userDetail.learnlang2}},{{userDetail.learnlang2level}}
+                            <br>{{userDetail.teachlang1}},{{userDetail.teachlang1level}}
+                            <br>{{userDetail.teachlang2}},{{userDetail.teachlang1leve2}}
+                            <br>{{userDetail.teachlang3}},{{userDetail.teachlang1leve3}}
+                            <br>{{userDetail.hobbyinterest}}
+                            <br>{{userDetail.comments}}
                             <br></p>
                           </v-flex>
                           <v-flex xs1>

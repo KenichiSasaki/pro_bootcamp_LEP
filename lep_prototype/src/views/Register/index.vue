@@ -558,7 +558,7 @@ export default{
         var db = firebase.firestore();
         db.collection("users").add({
           titechemail: this.titechemail,
-          username:this.username,
+          username: this.username,
           email2: this.email2,
           stundentid: this.studentid,
           gender: this.gender,
@@ -566,7 +566,7 @@ export default{
           major: this.major,
           degree: this.degree,
           weekend: this.weekend,
-          //campus: this.campus,
+          campus: this.campus,
           frequency: this.frequency,
           learnlang1: this.learnlang1,
           learnlang1level: this.learnlang1level,
