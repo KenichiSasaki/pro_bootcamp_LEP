@@ -30,7 +30,7 @@
           <a href="https://twitter.com/titech_action"><v-icon size="24px">fab fa-twitter</v-icon></a>
         </v-btn>
         <br>
-        <strong class="subheading">Get connected with email!: matsuo.h.ae-lep-support@ml.m.titech.ac.jp</strong>
+        <strong class="subheading">Get connected with email!: tandem.titech@gmail.com</strong>
         </v-card-text>
       <v-card-actions class="grey darken-3 justify-center">
         &copy;2018 — <strong>TokyoTech Action</strong>
