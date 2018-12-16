@@ -520,8 +520,8 @@ export default {
     },
 
     hiderequest2: function (){
-      this.showmembersmall2=true
-      this.showmemberbig2=false
+      this.showrequestsmall2=true
+      this.showrequestbig2=false
     },
 
     detailmember1: function (){
