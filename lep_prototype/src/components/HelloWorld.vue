@@ -16,19 +16,10 @@ background of foreign countries through learning foreign
 languages in this program.</p>  
 
     <h3>News</h3>
-    <p>Registration for 2nd term LEP in 4Q</p>
-    <ul>
-      <li><a href="https://docs.google.com/forms/d/1Oes9VQjuPvzwkWxJ3ItA3xhUBlouVIxLFUOPmpFw6_c/edit" target="_blank" rel="noopener">Registration</a></li>
-      
-    </ul>
+    <p>Registration for 2nd term LEP in 4Q is finished</p>
+    
     <h3>Event</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <p>Comming soon</p>
   </div>
 </template>
 

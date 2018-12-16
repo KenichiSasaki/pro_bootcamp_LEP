@@ -5,7 +5,7 @@
         
         <v-layout align-center>
           <v-flex xs12>
-            <img width="180px" alt="Logo" src="../../assets/LEP_logo.png" v-icon @click="backhome">
+            <img width="180px" alt="Logo" src="../../assets/LEP_logo.png">
             <h1>LEP program My Page</h1>
           </v-flex>
         </v-layout>
@@ -505,10 +505,7 @@ export default {
   },
 
   methods: {
-    backhome(){
-       this.$router.push('/home')
-      },
-
+    
     detailrequest1: function (){
       this.showrequestsmall1=false
       this.showrequestbig1=true
