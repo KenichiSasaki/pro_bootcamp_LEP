@@ -1,18 +1,18 @@
 <template>
   <div>
-    <header-tool-bar/>
     <router-view/>
+    <footer-bar/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HeaderToolBar from "./components/HeaderToolBar.vue";
+import FooterBar from "./components/FooterBar.vue";
 
 export default {
   name: "Users",
   components: {
-    //HeaderToolBar
+    FooterBar
   }
 };
 </script>
