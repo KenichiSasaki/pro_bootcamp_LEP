@@ -597,7 +597,7 @@ export default {
         this.userProfile = user;
         console.log(this.userProfile)
       }else{
-        alert("You need to login to see this page.")
+        //alert("You need to login to see this page.")
         this.$router.push("/")
       }
     })
