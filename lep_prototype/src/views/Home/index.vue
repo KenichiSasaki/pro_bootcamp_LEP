@@ -57,7 +57,6 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue';
 import firebase from "firebase";
-import MyPage from "@/views/MyPage";
 
 export default {
   name: 'home',
@@ -79,12 +78,12 @@ export default {
 
     signin: function () {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-      .then(user=> {
+      .then(user => {
         alert('Success!')
         this.$router.push('/mypage')
       },
       error => {
-        alert(err.message)
+        alert(error.message)
       });
     },
     newaccount: function () {

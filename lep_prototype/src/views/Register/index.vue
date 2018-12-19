@@ -588,7 +588,7 @@ export default{
           console.error("Error adding document: ", error);
           });
 
-          alert('Create account:', this.titechemail);
+          alert('Created account:', this.titechemail);
           console.log(username);
           this.$router.push('/mypage')
         })
