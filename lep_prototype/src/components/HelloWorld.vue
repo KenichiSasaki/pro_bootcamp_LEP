@@ -2,7 +2,7 @@
   <div class="hello">
     
     <h3 class='mb-2'>What is Language Exchange Partner? / 語学パートナーとは？</h3>
-    <p class='text-xs-left'>Private partner relationship between two students to support their　learning foreign languages each other.
+    <p class='text-xs-left'>Private partner relationship between two students to support their learning foreign languages each other.
     <br>Only you need is fixing a schedule with your partner. Then you can learn foreign languages practically at any time and any place without any fee.</p>
     <p class='text-xs-left'>異なる外国語を学ぶ学生同士でつくる、互いの語学学習を手助けするプライベートパートナーのことです。
     <br>お互いのスケジュールさえ合えば、お金をかけずに、好きな時に、好きな場所で、相互的な語学学習をすることができます。</p> 

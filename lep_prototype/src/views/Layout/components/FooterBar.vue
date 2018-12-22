@@ -54,7 +54,7 @@
   }
 </script>
 
-<style>
+<style scoped>
 .snslink {
   color: white;
   text-decoration: none;
