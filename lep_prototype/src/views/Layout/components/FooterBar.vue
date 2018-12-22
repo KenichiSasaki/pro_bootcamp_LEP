@@ -18,7 +18,7 @@
           dark
           icon
         >
-          <a href="https://www.facebook.com/Tokyo.Tech.ACTION" target="_blanck"><v-icon size="24px">fab fa-facebook</v-icon></a>
+          <a class="snslink" href="https://www.facebook.com/Tokyo.Tech.ACTION" target="_blanck"><v-icon size="24px">fab fa-facebook</v-icon></a>
         </v-btn>
 
         <v-btn
@@ -27,10 +27,10 @@
           dark
           icon
         >
-          <a href="https://twitter.com/titech_action" target="_blanck"><v-icon size="24px">fab fa-twitter</v-icon></a>
+          <a class="snslink" href="https://twitter.com/titech_action" target="_blanck"><v-icon size="24px">fab fa-twitter</v-icon></a>
         </v-btn>
         <br>
-        <strong class="subheading">Get connected with email!: tandem.titech@gmail.com</strong>
+        <strong class="subheading">Get connected with email!: <a href="mailto:tandem.titech@gmail.com">tandem.titech@gmail.com</a></strong>
         </v-card-text>
       <v-card-actions class="grey darken-3 justify-center">
         &copy;2018 — <strong>TokyoTech Action</strong>
@@ -43,12 +43,20 @@
 <script>
   export default {
     name: "FooterBar",
+    
     data: () => ({
-      snss: {icon1:'fab fa-facebook',icon2:'fab fa-twitter'}
       
     }),
-    methods: {
     
-      }
+    methods: {
+
+    }
   }
 </script>
+
+<style>
+.snslink {
+  color: white;
+  text-decoration: none;
+}
+</style>
