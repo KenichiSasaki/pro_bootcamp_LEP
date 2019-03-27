@@ -61,7 +61,8 @@
             <v-text-field
             type="password" 
             v-model="password"
-            placeholder="password">
+            placeholder="password"
+            :rules="[rules.password, rules.length(6)]">
             </v-text-field>
             <h3 v-if="alart1"> <font color="red"> Input 'titech.ac.jp' e-mail address and password </font> </h3>
             <v-btn v-on:click="gotopersonalinfo">Next</v-btn>
@@ -125,7 +126,8 @@
             <v-data-table
               :headers="headers"
               :items="time"
-              class="elevation-1"
+              :rows-per-page-items="[-1]"
+              hide-actions
             >
               <template slot="items" slot-scope="props">
                 <td>{{ props.item.name }}</td>
@@ -137,9 +139,12 @@
               </template>
             </v-data-table>
 
+            <p class="text-xs-left"><a>If you are available on weekend, please tap the checkbox below</a></p>
+
             <v-checkbox
-              :label="`Weekend: ${weekends[weekend].toString()}`"
               v-model="weekend"
+              color="red darken-3"
+              :label="`Weekend: ${weekends[weekend].toString()}`"
             ></v-checkbox>
 
             <v-overflow-btn
@@ -303,6 +308,12 @@ export default{
     //personal info
       titechemail: null,
       password: null,
+
+      rules: {
+        length: len => v => (v || '').length >= len || `Invalid character length, required more than ${len}`,
+        password: v => (v || '').match(/^(?=.*[a-z])(?=.*\d)/) ||
+          'Password must contain both letters and numbers',
+      },
       
       username: null,
       email2: null,
@@ -363,19 +374,19 @@ export default{
       dropdown_teach_level1: ['native','over C1'],
       dropdown_teach_level2: ['native','over C1'],
       dropdown_teach_level3: ['native','over C1'],
-      
+     
       headers:[
         {
           text: 'TIMELINE',
-          align: 'left',
+          align: 'Center',
           sortable: false,
           value: 'name'
         },
-        { text: 'Mon', value: 'mon' },
-        { text: 'Tue', value: 'tue' },
-        { text: 'Wed', value: 'wed' },
-        { text: 'Thu', value: 'thu' },
-        { text: 'Fri', value: 'Fri' }
+        { text: 'Mon', value: 'mon', sortable: 0 },
+        { text: 'Tue', value: 'tue', sortable: 0 },
+        { text: 'Wed', value: 'wed', sortable: 0 },
+        { text: 'Thu', value: 'thu', sortable: 0 },
+        { text: 'Fri', value: 'Fri', sortable: 0 }
       ],
       time: [
         {
