@@ -125,18 +125,21 @@
             <v-data-table
               :headers="headers"
               :items="time"
+              v-model="selected"
               class="elevation-1"
             >
               <template slot="items" slot-scope="props">
+                <tr :active="props.selected" @click="props.selected = !props.selected">
                 <td>{{ props.item.name }}</td>
                 <td><v-checkbox v-model="props.item.mondayValue"></v-checkbox></td>
                 <td><v-checkbox v-model="props.item.tuedayValue"></v-checkbox></td>
                 <td><v-checkbox v-model="props.item.wednesdayValue"></v-checkbox></td>
                 <td><v-checkbox v-model="props.item.thursdayValue"></v-checkbox></td>
                 <td><v-checkbox v-model="props.item.fridayValue"></v-checkbox></td>
+                </tr>
               </template>
             </v-data-table>
-
+            {{msg}}
             <v-checkbox
               :label="`Weekend: ${weekends[weekend].toString()}`"
               v-model="weekend"
@@ -306,7 +309,7 @@ export default{
       
       username: null,
       email2: null,
-      stundentid: null,
+      studentid: null,
       
       gender: null,
       major: null,
@@ -377,6 +380,7 @@ export default{
         { text: 'Thu', value: 'thu' },
         { text: 'Fri', value: 'Fri' }
       ],
+      selected : [],
       time: [
         {
           mondayValue: false,
@@ -437,7 +441,14 @@ export default{
       ]       
     }
   },
+  computed: {
+    msg() {
+      const data = this.selected.toString();
+      console.log("data",this.selected);
+      return data ? `${data}`: "no data found!";
+    }
 
+  },
   methods: {
 
     backhome(){
