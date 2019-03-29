@@ -459,23 +459,25 @@ export default{
       if (this.agreement=="agreement-1") {
         this.shownewaccount=true
         this.showagreement=false
+        scrollTo(0,0)
       }
       else if (this.agreement=="agreement-2") {
         this.shownewaccount=false
-        this.$router.push('/')
+        //this.$router.push('/')
       }
     },
     
     gotopersonalinfo: function() {
-      const value1 = this.titechemail && this.titechemail.trim()
-      const value2 = this.password && this.password.trim()
+      var value1 = this.titechemail && this.titechemail.trim()
+      var value2 = this.password && this.password.trim()
       if (
         value1 != null && value1 != "" &&
         value2 != null && value2 != "" &&
-        this.titechemail.match('titech.ac.jp') != null ) {
+        this.titechemail.match(/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(titech.ac.jp)|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i) != null ) {
           this.shownewaccount=false
           this.showpersnalinfo=true
           this.alart1 = false
+          scrollTo(0,0)
       }
       else {
         this.alart1 = true
@@ -484,14 +486,15 @@ export default{
     backtonewaccount: function() {
       this.shownewaccount=true
       this.showpersnalinfo=false
+      scrollTo(0,0)
     },
 
     gotoschedule: function() {
-      const value1 = this.username && this.username.trim()
-      const value2 = this.studentid && this.studentid.trim()
-      const value3 = this.gender
-      const value4 = this.nation
-      const value5 = this.degree
+      var value1 = this.username && this.username.trim()
+      var value2 = this.studentid && this.studentid.trim()
+      var value3 = this.gender
+      var value4 = this.nation
+      var value5 = this.degree
       if (
         value1 != null && value1 != "" &&
         value2 != null && value2 != "" &&
@@ -501,6 +504,7 @@ export default{
           this.showpersnalinfo=false
           this.showschedule=true
           this.alart2 = false
+          scrollTo(0,0)
           }
       else {
         this.alart2 = true
@@ -509,15 +513,18 @@ export default{
     backtopersonalinfo: function() {
       this.showpersnalinfo=true
       this.showschedule=false
+      scrollTo(0,0)
     },
 
     gotolanguagewant: function() {
       this.showschedule=false
       this.showlanguagewant=true
+      scrollTo(0,0)
     },
     backtoschedule: function() {
       this.showschedule=true
       this.showlanguagewant=false
+      scrollTo(0,0)
     },
 
     gotolanguageteach: function() {
@@ -527,6 +534,7 @@ export default{
           this.showlanguagewant=false
           this.showlanguageteach=true
           this.alart3 = false
+          scrollTo(0,0)
         }
       else {
         this.alart3 = true
@@ -535,6 +543,7 @@ export default{
     backtolanguagewant: function() {
       this.showlanguagewant=true
       this.showlanguageteach=false
+      scrollTo(0,0)
     },
 
     gotofindinfo: function() {
@@ -544,6 +553,7 @@ export default{
           this.showlanguageteach=false
           this.showfindinfo=true
           this.alart4 = false
+          scrollTo(0,0)
         }
       else {
         this.alart4 = true
@@ -552,15 +562,18 @@ export default{
     backtolanguageteach: function() {
       this.showlanguageteach=true
       this.showfindinfo=false
+      scrollTo(0,0)
     },
 
     confirm: function() {
       this.showfindinfo=false
       this.showconfirm=true
+      scrollTo(0,0)
     },
     backtofindinfo: function() {
       this.showfindinfo=true
       this.showconfirm=false
+      scrollTo(0,0)
     },
     
     signUp: function () {
