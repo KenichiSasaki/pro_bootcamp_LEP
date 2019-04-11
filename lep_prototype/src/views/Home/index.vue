@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <v-content>
-      <v-container>
+      <v-container grid-list-md>
         
         <v-layout>
           <v-flex xs12>
@@ -12,9 +12,9 @@
       </v-container>
 
       <v-container>
-        <v-layout row>
+        <v-layout row wrap>
 
-          <v-flex xs8>
+          <v-flex md8>
             <v-card flat>
               <v-card-text>
               <HelloWorld/>
@@ -22,7 +22,7 @@
              </v-card>
            </v-flex>
 
-          <v-flex xs4>
+          <v-flex md4>
             <v-card>
               <v-card-text>
                 <v-flex xs10 offset-xs1>
@@ -35,22 +35,20 @@
                     </v-text-field>
                   </v-card> 
                 </v-flex>
-                 
                 <v-btn v-on:click="signin">LogIn</v-btn> 
-                </v-card-text>
-              </v-card><br>
-             <v-card>
-               <v-card-text>     
+              </v-card-text>
+            </v-card>
+            <v-card>
+              <v-card-text>
                 <v-btn v-on:click="newaccount">Create New Account</v-btn>
-               </v-card-text>
-             </v-card>
-           </v-flex>
-
+              </v-card-text>
+            </v-card>
+          </v-flex>
         </v-layout>
 
-       </v-container>
-     </v-content>
-   </div>
+      </v-container>
+    </v-content>
+  </div>
 </template>
 
 <script>
