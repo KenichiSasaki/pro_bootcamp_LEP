@@ -307,7 +307,7 @@ export default {
       
       username: null,
       email2: null,
-      stundentid: null,
+      studentid: null,
       
       gender: null,
       major: null,
