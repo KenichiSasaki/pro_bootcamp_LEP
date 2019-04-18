@@ -1,37 +1,35 @@
 <template>
   <div class="home">
-    
     <v-content>
       <v-container grid-list-md>
+        
         <v-layout>
           <v-flex xs12>
             <img width="180px" alt="Logo" src="../../assets/LEP_logo.png" v-icon @click="backhome">
             <h3 class="ma-3">Language Exchange Partner program for TokyoTech</h3>
             <h1 class="mb-4">Registration</h1>
-              
           </v-flex>
         </v-layout>
 
-        <v-card flat>
-          <v-card-text v-if="showagreement">
+        <v-card flat v-if="showagreement">
+          <v-card-text>
             <p class="text-xs-left">This application form is for the Language Exchange Partner program (LEP) that takes place during the fourth quarter in 2018 academic year.
             <br>LEP is the system for TokyoTech students learning languages through conversation with your partner. This Google form is required to fill in so we can suggest the best partner for this program.
             <br>The important information (name, student ID, and e-mail address) will be deleted when this program has finished for those who get partners, and when matching has finished for those who could not get partners.</p>
-              <p class="d-inline-flex">*Before you join, please read the overview of LEP and the terms of use.</p>
-              <ul>
-                <li><a href="https://drive.google.com/open?id=1T8HfqHmq4urYis2j4i8AfRbQbxKCkTuc" target="_blank" rel="noopener">Overview of LEP</a></li>
-                <li><a href="https://drive.google.com/file/d/1ka0aC5JxEsRdrHPIEgTpENAHPkLj2VAk/view?usp=sharing" target="_blank" rel="noopener">Terms of use</a></li>
-              </ul>
+            <p class="d-inline-flex">*Before you join, please read the overview of LEP and the terms of use.</p>
+            <ul>
+              <li><a href="https://drive.google.com/open?id=1T8HfqHmq4urYis2j4i8AfRbQbxKCkTuc" target="_blank" rel="noopener">Overview of LEP</a></li>
+              <li><a href="https://drive.google.com/file/d/1ka0aC5JxEsRdrHPIEgTpENAHPkLj2VAk/view?usp=sharing" target="_blank" rel="noopener">Terms of use</a></li>
+            </ul>
             <br>
             <p class="text-xs-left">本フォームは、2018年度第4クオーター中に行われるLanguage Exchange Partner制度(LEP)のための応募フォームです。
             <br>LEPは，東京工業大学に在籍する学生が，語学パートナーとの会話を通じて言語習得を目指すシステムです．本フォームはより楽しく・効率的に学習が行えるパートナーを提案するために必要なものです．参加をご希望の方は必要事項に記入をお願いいたします．
             <br>なお，マッチングできた学生に関しては制度実施期間終了後に，マッチングできなかった学生に関してはマッチング期間後に重要な個人情報（氏名、学生番号、メールアドレス）を全て消去いたします。</p>
             <p class="d-inline-flex">※参加を希望される方は制度概要と利用規約をお読みください。</p>
-              <ul>
-                <li><a href="https://drive.google.com/open?id=1T8HfqHmq4urYis2j4i8AfRbQbxKCkTuc" target="_blank" rel="noopener">制度概要</a></li>
-                <li><a href="https://drive.google.com/file/d/1ka0aC5JxEsRdrHPIEgTpENAHPkLj2VAk/view?usp=sharing" target="_blank" rel="noopener">利用規約</a></li>
-              </ul>
-          
+            <ul>
+              <li><a href="https://drive.google.com/open?id=1T8HfqHmq4urYis2j4i8AfRbQbxKCkTuc" target="_blank" rel="noopener">制度概要</a></li>
+              <li><a href="https://drive.google.com/file/d/1ka0aC5JxEsRdrHPIEgTpENAHPkLj2VAk/view?usp=sharing" target="_blank" rel="noopener">利用規約</a></li>
+            </ul>
             <v-radio-group v-model="agreement" :mandatory="false">
               <v-radio label="I agree / 同意する" value="agreement-1"></v-radio>
               <v-radio label="I do not agree / 同意しない" value="agreement-2"></v-radio>
@@ -39,7 +37,7 @@
             <v-btn v-on:click="gotonewaccount">Create New Account</v-btn>
           </v-card-text>
         </v-card>
-
+        
         <v-card flat v-if='shownewaccount'>
           <v-card-text>
             <h1> Account Information </h1>
@@ -274,12 +272,13 @@
           </v-card-text>
         </v-card>
 
-          </v-container>
-     </v-content>
-   </div>
+      </v-container>
+    </v-content>
+  </div>
 </template>
 
 <script>
+
 import firebase from "firebase";
 import languages from "../../api/db/languages.js";
 import countries from "../../api/db/countries.js";
