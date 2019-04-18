@@ -52,12 +52,12 @@
             placeholder="password"
             :rules="[rules.password, rules.length(6)]">
             </v-text-field>
-            <h3 v-if="alart1"> <font color="red"> Input 'titech.ac.jp' e-mail address and password </font> </h3>
+            <h3 v-if="alert1"> <font color="red"> Input 'titech.ac.jp' e-mail address and password </font> </h3>
             <v-btn v-on:click="gotopersonalinfo">Next</v-btn>
           </v-card-text>
         </v-card>
 
-        <v-card flat v-if="showpersnalinfo">
+        <v-card flat v-if="showpersonalinfo">
           <v-card-text>
             <h1 class="mb-3"> Personal Information</h1> 
             
@@ -101,7 +101,7 @@
               :items="dropdown_degree"
               label="Degree"
             ></v-overflow-btn>
-            <h3 v-if="alart2"> <font color="red"> Fill in the forms </font> </h3>
+            <h3 v-if="alert2"> <font color="red"> Fill in the forms </font> </h3>
             <v-btn v-on:click="backtonewaccount">Back</v-btn>
             <v-btn v-on:click="gotoschedule">Next</v-btn>
           </v-card-text>
@@ -120,7 +120,7 @@
               <template slot="items" slot-scope="props">
                 <td>{{ props.item.name }}</td>
                 <td><v-checkbox v-model="props.item.mondayValue"></v-checkbox></td>
-                <td><v-checkbox v-model="props.item.tuedayValue"></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.tuesdayValue"></v-checkbox></td>
                 <td><v-checkbox v-model="props.item.wednesdayValue"></v-checkbox></td>
                 <td><v-checkbox v-model="props.item.thursdayValue"></v-checkbox></td>
                 <td><v-checkbox v-model="props.item.fridayValue"></v-checkbox></td>
@@ -178,7 +178,7 @@
               :items="dropdown_want_level2"
               label="Language proficiency"
             ></v-overflow-btn>
-            <h3 v-if="alart3"> <font color="red"> Select language which you want to learn </font> </h3>
+            <h3 v-if="alert3"> <font color="red"> Select language which you want to learn </font> </h3>
             <v-btn v-on:click="backtoschedule">Back</v-btn>
             <v-btn v-on:click="gotolanguageteach">Next</v-btn>
           </v-card-text>
@@ -217,7 +217,7 @@
               :items="dropdown_teach_level3"
               label="Language proficiency"
             ></v-overflow-btn>
-            <h3 v-if="alart4"> <font color="red"> Select language which you can teach </font> </h3>
+            <h3 v-if="alert4"> <font color="red"> Select language which you can teach </font> </h3>
             <v-btn v-on:click="backtolanguagewant">Back</v-btn>
             <v-btn v-on:click="gotofindinfo">Next</v-btn>
           </v-card-text>
@@ -335,14 +335,14 @@ export default {
     //
       agreement: null,
 
-      alart1: false,
-      alart2: false,
-      alart3: false,
-      alart4: false,
+      alert1: false,
+      alert2: false,
+      alert3: false,
+      alert4: false,
 
       showagreement: true,
       shownewaccount: false,
-      showpersnalinfo: false,
+      showpersonalinfo: false,
       showschedule: false,
       showlanguagewant: false,
       showlanguageteach: false,
@@ -381,7 +381,7 @@ export default {
       time: [
         {
           mondayValue: false,
-          tuedayValue: false,
+          tuesdayValue: false,
           wednesdayValue: false,
           thursdayValue: false,
           fridayValue: false,
@@ -389,7 +389,7 @@ export default {
         },
         {
           mondayValue: false,
-          tuedayValue: false,
+          tuesdayValue: false,
           wednesdayValue: false,
           thursdayValue: false,
           fridayValue: false,
@@ -397,7 +397,7 @@ export default {
         },
         {
           mondayValue: false,
-          tuedayValue: false,
+          tuesdayValue: false,
           wednesdayValue: false,
           thursdayValue: false,
           fridayValue: false,
@@ -405,7 +405,7 @@ export default {
         },
         {
           mondayValue: false,
-          tuedayValue: false,
+          tuesdayValue: false,
           wednesdayValue: false,
           thursdayValue: false,
           fridayValue: false,
@@ -413,7 +413,7 @@ export default {
         },
         {
           mondayValue: false,
-          tuedayValue: false,
+          tuesdayValue: false,
           wednesdayValue: false,
           thursdayValue: false,
           fridayValue: false,
@@ -421,7 +421,7 @@ export default {
         },
         {
           mondayValue: false,
-          tuedayValue: false,
+          tuesdayValue: false,
           wednesdayValue: false,
           thursdayValue: false,
           fridayValue: false,
@@ -429,7 +429,7 @@ export default {
         },
         {
           mondayValue: false,
-          tuedayValue: false,
+          tuesdayValue: false,
           wednesdayValue: false,
           thursdayValue: false,
           fridayValue: false,
@@ -465,17 +465,17 @@ export default {
         value2 != null && value2 != "" &&
         this.titechemail.match(/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(titech.ac.jp)|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i) != null ) {
           this.shownewaccount=false
-          this.showpersnalinfo=true
-          this.alart1 = false
+          this.showpersonalinfo=true
+          this.alert1 = false
           scrollTo(0,0)
       }
       else {
-        this.alart1 = true
+        this.alert1 = true
       }
     },
     backtonewaccount: function() {
       this.shownewaccount=true
-      this.showpersnalinfo=false
+      this.showpersonalinfo=false
       scrollTo(0,0)
     },
 
@@ -491,17 +491,17 @@ export default {
         value3 != null && 
         value4 != null &&
         value5 != null) {
-          this.showpersnalinfo=false
+          this.showpersonalinfo=false
           this.showschedule=true
-          this.alart2 = false
+          this.alert2 = false
           scrollTo(0,0)
           }
       else {
-        this.alart2 = true
+        this.alert2 = true
       }
     },
     backtopersonalinfo: function() {
-      this.showpersnalinfo=true
+      this.showpersonalinfo=true
       this.showschedule=false
       scrollTo(0,0)
     },
@@ -523,11 +523,11 @@ export default {
         this.learnlang1level != null) {
           this.showlanguagewant=false
           this.showlanguageteach=true
-          this.alart3 = false
+          this.alert3 = false
           scrollTo(0,0)
         }
       else {
-        this.alart3 = true
+        this.alert3 = true
       }
     },
     backtolanguagewant: function() {
@@ -542,11 +542,11 @@ export default {
         this.teachlang1level != null ){
           this.showlanguageteach=false
           this.showfindinfo=true
-          this.alart4 = false
+          this.alert4 = false
           scrollTo(0,0)
         }
       else {
-        this.alart4 = true
+        this.alert4 = true
       }
     },
     backtolanguageteach: function() {
