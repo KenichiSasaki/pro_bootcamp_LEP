@@ -332,7 +332,7 @@ export default {
 
       hobbyinterest: null,
       comments: null,
-    //
+      
       agreement: null,
 
       alart1: false,
@@ -341,12 +341,12 @@ export default {
       alart4: false,
 
       showagreement: true,
-      shownewaccount: false,
-      showpersnalinfo: false,
-      showschedule: false,
-      showlanguagewant: false,
-      showlanguageteach: false,
-      showfindinfo: false,
+      shownewaccount: true,//false,
+      showpersnalinfo: true,//false,
+      showschedule: true,//false,
+      showlanguagewant: true,//false,
+      showlanguageteach: true,//false,
+      showfindinfo: true,//false,
 
       weekends: {true:"available", false:"unavailable"},
 
