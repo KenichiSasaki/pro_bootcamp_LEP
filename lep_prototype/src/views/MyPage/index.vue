@@ -19,6 +19,7 @@
             </v-flex>
           </v-layout>
         </v-toolbar>
+
         <v-layout align-center>
           <v-flex xs12>
             <v-tabs
@@ -30,16 +31,21 @@
               <v-tabs-slider color="black"></v-tabs-slider>
 
               <v-tab href="#tab-1">
+                Your Partner
+                <v-icon>group</v-icon>
+              </v-tab>
+              
+              <v-tab href="#tab-2">
                 Requests
                 <v-icon>notifications_active</v-icon>
               </v-tab>
 
-              <v-tab href="#tab-2">
+              <v-tab href="#tab-3">
                 Find Partner
                 <v-icon>person_add</v-icon>
               </v-tab>
 
-              <v-tab href="#tab-3">
+              <v-tab href="#tab-4">
                 Setting
                 <v-icon>settings</v-icon>
               </v-tab>
@@ -47,6 +53,15 @@
               <v-tabs-items>
 
                 <v-tab-item :id="'tab-1'">
+                  <v-card flat>
+                    <v-card-text>
+                      <h2 class="text-xs-left">Your Partner</h2>
+                      <v-btn>activity report</v-btn>
+                    </v-card-text>
+                  </v-card>
+                </v-tab-item>
+
+                <v-tab-item :id="'tab-2'">
                   <v-card flat>
                     <v-card-text>
                       <h2 class="text-xs-left mb-3">You've got 2 requests!!</h2>
@@ -113,7 +128,7 @@
                   </v-card>
                 </v-tab-item>
 
-                <v-tab-item :id="'tab-2'">
+                <v-tab-item :id="'tab-3'">
                   <v-card flat>
                     <v-card-text>
                       <h2 class="text-xs-left mb-3">Member lists</h2>
@@ -208,35 +223,34 @@
                   </v-card>
                 </v-tab-item>
 
-                <v-tab-item :id="'tab-3'">
+                <v-tab-item :id="'tab-4'">
                   <v-card flat>
                     <v-card-text>
                       <h2 class="text-xs-left">Account information</h2>
                       <v-card flat>
                         <v-card-text>
-                          <v-layout row>
-                            <v-flex xs4>
-                              <p class="text-xs-right">User Name:
-                              <br>Titech email:
-                              <br>2nd email:
-                              <br>Student ID:
-                              <br>Gender:
-                              <br>Nationality:
-                              <br>Department:
-                              <br>Degree:
-                              <br>Schedule:
-                              <br>Weekend:
-                              <br>Campus:
-                              <br>Preferred frequency:
-                              <br>Language want to learn (level):
-                              <br>2nd Language want to learn (level):
-                              <br>Language you can teach (level):
-                              <br>2nd Language you can teach (level):
-                              <br>3rd Language you can teach (level):
-                              <br>Hobby and Interest:
-                              <br>Comments:
+                              <p class="text-xs-center">User Name:   {{userDetail.username}}
+                              <br>Titech email:   {{userDetail.titechemail}}
+                              <br>2nd email:   {{userDetail.email2}}
+                              <br>Student ID:   {{userDetail.studentid}}
+                              <br>Gender:   {{userDetail.gender}}
+                              <br>Nationality:   {{userDetail.nation}}
+                              <br>Department:   {{userDetail.major}}
+                              <br>Degree:   {{userDetail.degree}}
+                              <br>Schedule:   {{userDetail.username}}
+                              <br>Weekend:   {{userDetail.weekend}}
+                              <br>Campus:   {{userDetail.campus}}
+                              <br>Preferred frequency:   {{userDetail.frequency}}
+                              <br>Language want to learn (level):  {{userDetail.learnlang1}},{{userDetail.learnlang1level}}
+                              <br>2nd Language want to learn (level):   {{userDetail.learnlang2}},{{userDetail.learnlang2level}}
+                              <br>Language you can teach (level): {{userDetail.teachlang1}},{{userDetail.teachlang1level}}
+                              <br>2nd Language you can teach (level):   {{userDetail.teachlang2}},{{userDetail.teachlang1leve2}}
+                              <br>3rd Language you can teach (level):   {{userDetail.teachlang3}},{{userDetail.teachlang1leve3}}
+                              <br>Hobby and Interest:   {{userDetail.hobbyinterest}}
+                              <br>Comments:  {{userDetail.comments}}
                               <br></p>
-                            </v-flex>
+                              <v-btn>Edit</v-btn>
+                            <!--
                             <v-flex xs7>
                               <p class="text-xs-left">{{userDetail.username}}
                               <br>{{userDetail.titechemail}}
@@ -278,7 +292,7 @@
                               <br>[Edit]
                               <br></p>
                             </v-flex>
-                          </v-layout>
+                            -->
                         </v-card-text>
                       </v-card>
 
@@ -385,9 +399,9 @@
             </v-tabs>
           </v-flex>
         </v-layout>
-       </v-container>
-     </v-content>
-   </div>
+      </v-container>
+    </v-content>
+  </div>
 </template>
 
 <script>
@@ -460,8 +474,6 @@ export default {
   },
 
   beforeCreate() {
-
-
   },
   
   created() {

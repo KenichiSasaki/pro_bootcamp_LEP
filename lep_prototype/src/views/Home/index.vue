@@ -36,12 +36,16 @@
                 <v-btn v-on:click="newaccount">Create New Account</v-btn>
               </v-card-text>
             </v-card>
+            <v-card flat>
+              <timeline :id="'titech_action'" :sourceType="'profile'" :options="{ height: '400' }"></timeline>
+            </v-card>
           </v-flex>
         </v-layout>
+        <!--
         <v-layout row wrap>
           <v-flex md6>
             <v-card flat>
-              <timeline :id="'titech_action'" :sourceType="'profile'" :options="{ tweetLimit: '3' }"></timeline>
+              <timeline :id="'titech_action'" :sourceType="'profile'" :options="{ height: '300' }"></timeline>
             </v-card>
           </v-flex>
           <v-flex md6>
@@ -53,6 +57,7 @@
             </v-card>
           </v-flex>
         </v-layout>
+        -->
       </v-container>
     </v-content>
   </div>

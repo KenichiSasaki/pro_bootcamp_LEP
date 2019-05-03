@@ -341,12 +341,13 @@ export default {
       alart4: false,
 
       showagreement: true,
-      shownewaccount: true,//false,
-      showpersnalinfo: true,//false,
-      showschedule: true,//false,
-      showlanguagewant: true,//false,
-      showlanguageteach: true,//false,
-      showfindinfo: true,//false,
+      shownewaccount: false,
+      showpersnalinfo: false,
+      showschedule: false,
+      showlanguagewant: false,
+      showlanguageteach: false,
+      showfindinfo: false,
+      showconfirm: false,
 
       weekends: {true:"available", false:"unavailable"},
 
