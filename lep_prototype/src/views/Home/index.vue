@@ -41,6 +41,7 @@
             <v-card>
               <v-card-text>
                 <v-btn v-on:click="newaccount">Create New Account</v-btn>
+                <v-btn @click="sendMail"><v-icon>mail</v-icon>メール送信</v-btn>
               </v-card-text>
             </v-card>
           </v-flex>
@@ -86,8 +87,14 @@ export default {
     },
     newaccount: function () {
       this.$router.push('/register')
-    } 
-    
+    }, 
+    sendMail: function () {
+      const sendMail = ff.httpsCallable('sendMail')
+      let parent = this
+      sendResults({destination: 'hoge@hoge.com'}).then(function (result) {
+        parent.snackbar = true
+      })
+    }
   }
   
 

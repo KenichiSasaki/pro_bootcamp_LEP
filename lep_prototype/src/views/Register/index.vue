@@ -112,6 +112,7 @@
             <h1 class="mb-3">Your Schedule</h1>
             <h3>Please check your schedule available</h3>
             <v-data-table
+              v-model = "selected"
               :headers="headers"
               :items="time"
               :rows-per-page-items="[-1]"
@@ -119,11 +120,11 @@
             >
               <template slot="items" slot-scope="props">
                 <td>{{ props.item.name }}</td>
-                <td><v-checkbox v-model="props.item.mondayValue"></v-checkbox></td>
-                <td><v-checkbox v-model="props.item.tuesdayValue"></v-checkbox></td>
-                <td><v-checkbox v-model="props.item.wednesdayValue"></v-checkbox></td>
-                <td><v-checkbox v-model="props.item.thursdayValue"></v-checkbox></td>
-                <td><v-checkbox v-model="props.item.fridayValue"></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.selected" primary hide-details></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.tuesdayValue.selected"></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.wednesdayValue.selected"></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.thursdayValue.selected"></v-checkbox></td>
+                <td><v-checkbox v-model="props.item.fridayValue.selected"></v-checkbox></td>
               </template>
             </v-data-table>
 
@@ -348,6 +349,7 @@ export default {
       showlanguageteach: false,
       showfindinfo: false,
 
+      selected: [],
       weekends: {true:"available", false:"unavailable"},
 
       dropdown_gender: ['Male','Female','Others'],
@@ -579,6 +581,7 @@ export default {
           nation: this.nation,
           major: this.major,
           degree: this.degree,
+          selected: this.selected,
           weekend: this.weekend,
           campus: this.campus,
           frequency: this.frequency,

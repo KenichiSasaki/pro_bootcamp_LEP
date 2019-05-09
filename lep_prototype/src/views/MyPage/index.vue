@@ -342,6 +342,7 @@
                             <br>Department:
                             <br>Degree:
                             <br>Schedule:
+                            <br>Selected:
                             <br>Weekend:
                             <br>Campus:
                             <br>Preferred frequency:
@@ -364,6 +365,7 @@
                             <br>{{userDetail.major}}
                             <br>{{userDetail.degree}}
                             <br>{{userDetail.username}}
+                            <br>{{userDetail.selected}}
                             <br>{{userDetail.weekend}}
                             <br>{{userDetail.campus}}
                             <br>{{userDetail.frequency}}
